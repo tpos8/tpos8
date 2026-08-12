@@ -266,6 +266,27 @@
     .contact-list { position: relative; z-index: 1; display: grid; gap: 9px; }
     .contact-item { padding: 11px 13px; border: 1px solid rgba(255,255,255,.18); border-radius: 9px 13px 10px 14px; background: rgba(5,4,22,.16); font-size: 14px; }
     .contact-item a:hover { color: var(--gold); }
+    .life-intro { max-width: 520px; margin: 0 0 26px; color: var(--mist); }
+    .life-gallery { display: grid; grid-template-columns: 1.05fr .95fr 1.05fr; grid-auto-rows: 190px; gap: 15px; }
+    .life-photo { position: relative; overflow: hidden; min-height: 0; padding: 0; border: 1px solid rgba(222, 210, 255, .36); border-radius: 19px 24px 18px 25px; cursor: zoom-in; background: var(--paper-2); box-shadow: var(--shadow); transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease; }
+    .life-photo:nth-child(1) { grid-row: span 2; transform: rotate(-1.1deg); }
+    .life-photo:nth-child(2) { grid-row: span 2; transform: rotate(1.05deg); }
+    .life-photo:nth-child(3) { grid-row: span 2; transform: rotate(-.65deg); }
+    .life-photo:nth-child(4) { grid-column: span 2; transform: rotate(.65deg); }
+    .life-photo:nth-child(5) { transform: rotate(-1deg); }
+    .life-photo::after { content: ""; position: absolute; inset: 0; opacity: 0; background: linear-gradient(180deg, transparent 45%, rgba(7, 7, 27, .7)); transition: opacity .28s ease; }
+    .life-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.8,.2,1), filter .4s ease; }
+    .life-photo:hover { z-index: 2; border-color: var(--gold); box-shadow: 0 25px 50px rgba(0,0,0,.42); transform: translateY(-7px) rotate(0deg); }
+    .life-photo:hover img { transform: scale(1.075); filter: saturate(1.08) contrast(1.04); }
+    .life-photo:hover::after { opacity: 1; }
+    .photo-note { position: absolute; z-index: 1; right: 14px; bottom: 10px; color: #fffaf0; font-family: "Bradley Hand", "Comic Sans MS", cursive; font-size: 13px; letter-spacing: .08em; opacity: 0; transform: translateY(8px); transition: opacity .28s ease, transform .28s ease; }
+    .life-photo:hover .photo-note { opacity: 1; transform: translateY(0); }
+    .lightbox { position: fixed; z-index: 110; inset: 0; display: grid; place-items: center; padding: 30px; opacity: 0; visibility: hidden; background: rgba(3, 3, 16, .86); backdrop-filter: blur(11px); transition: opacity .25s ease, visibility .25s ease; }
+    .lightbox.open { opacity: 1; visibility: visible; }
+    .lightbox figure { position: relative; max-width: min(90vw, 900px); max-height: 88vh; margin: 0; transform: scale(.95); transition: transform .28s ease; }
+    .lightbox.open figure { transform: scale(1); }
+    .lightbox img { display: block; max-width: 90vw; max-height: 82vh; border: 1px solid rgba(255,255,255,.58); border-radius: 11px 15px 12px 16px; box-shadow: 0 28px 80px rgba(0,0,0,.6); }
+    .lightbox button { position: absolute; top: -17px; right: -17px; width: 37px; height: 37px; border: 1px solid rgba(255,255,255,.8); border-radius: 50%; color: #16102c; cursor: pointer; background: var(--gold); font-size: 23px; line-height: 1; box-shadow: 2px 3px 0 rgba(255,255,255,.18); }
     footer { padding: 35px 0 45px; color: rgba(215,205,255,.55); text-align: center; font-size: 12px; }
 
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity .66s ease, transform .66s ease; }
@@ -299,6 +320,11 @@
       .certificate div { justify-content: flex-start; }
       .brand-text { display: none; }
       h1 { font-size: clamp(48px, 17vw, 78px); }
+      .life-gallery { grid-template-columns: 1fr 1fr; grid-auto-rows: 175px; gap: 12px; }
+      .life-photo:nth-child(1), .life-photo:nth-child(2), .life-photo:nth-child(3) { grid-row: span 2; }
+      .life-photo:nth-child(3) { grid-column: span 2; grid-row: span 1; }
+      .life-photo:nth-child(4) { grid-column: span 2; }
+      .life-photo:nth-child(5) { grid-column: span 2; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -324,7 +350,7 @@
     <div class="container nav">
       <a class="brand" href="#top" aria-label="回到顶部"><span class="brand-star">✦</span><span class="brand-text">林扬洋 · SMALL ORBIT</span></a>
       <nav class="nav-links" id="navLinks" aria-label="页面导航">
-        <a href="#about">关于我</a><a href="#education">教育</a><a href="#experience">经历</a><a href="#projects">项目</a><a href="#skills">技能</a>
+        <a href="#about">关于我</a><a href="#education">教育</a><a href="#experience">经历</a><a href="#projects">项目</a><a href="#skills">技能</a><a href="#life">生活</a>
       </nav>
       <div><a class="nav-cta" href="#contact">与我联系 ↗</a><button class="menu" id="menuButton" type="button" aria-label="打开导航菜单">☰</button></div>
     </div>
@@ -338,7 +364,7 @@
           <h1>林扬洋<span>把每一次连接，变成可持续的增长。</span></h1>
           <p class="hero-summary">2027 届物理学硕士。具备<strong>线下零售销售、客户需求沟通、渠道获客、私域运营与数据分析</strong>的复合实践，习惯从真实场景出发，推动一件事从想法走到结果。</p>
           <div class="hero-actions"><a class="button button-primary" href="#experience">查看我的经历 ↓</a><a class="button button-secondary" href="#contact">联系我</a></div>
-          <div class="contact-strip"><span><a href="tel:17842275174">178 4227 5174</a></span><span><a href="mailto:1349802098@qq.com">1349802098@qq.com</a></span><span>上海 · 硕士在读</span></div>
+          <div class="contact-strip"><span><a href="tel:17842275174">178 4227 5174</a></span><span><a href="mailto:1349802098@qq.com">1349802098@qq.com</a></span><span><a href="https://github.com/tpos8" target="_blank" rel="noreferrer">GitHub @tpos8 ↗</a></span><span>上海 · 硕士在读</span></div>
         </div>
         <div class="hero-orbit reveal">
           <div class="portrait"><img src="assets/avatar.png" alt="林扬洋照片" /></div>
@@ -409,11 +435,24 @@
       </div>
     </div></section>
 
+    <section id="life"><div class="container">
+      <div class="section-heading reveal"><div><span class="eyebrow">Life on Earth</span><h2>生活切片</h2></div><p>走出屏幕、走进山野；在自己的小小轨道上，收集辽阔与晴朗。</p></div>
+      <p class="life-intro reveal">这一组来自高原与山野的瞬间。点击任意照片，可以放大查看。</p>
+      <div class="life-gallery">
+        <button class="life-photo reveal" type="button" data-photo="assets/life-01.jpg" aria-label="查看草原牛仔帽照片"><img src="assets/life-01.jpg" alt="草原上的林扬洋，戴着牛仔帽" /><span class="photo-note">wide open sky</span></button>
+        <button class="life-photo reveal" type="button" data-photo="assets/life-02.jpg" aria-label="查看山湖徒步照片"><img src="assets/life-02.jpg" alt="云雾山湖边徒步的林扬洋" /><span class="photo-note">into the wild</span></button>
+        <button class="life-photo reveal" type="button" data-photo="assets/life-03.jpg" aria-label="查看骑马照片"><img src="assets/life-03.jpg" alt="草原上骑马的林扬洋" /><span class="photo-note">ride with wind</span></button>
+        <button class="life-photo reveal" type="button" data-photo="assets/life-04.jpg" aria-label="查看草原合影"><img src="assets/life-04.jpg" alt="草原花海中的林扬洋" /><span class="photo-note">a good day</span></button>
+        <button class="life-photo reveal" type="button" data-photo="assets/life-05.jpg" aria-label="查看山路照片"><img src="assets/life-05.jpg" alt="山路边的林扬洋" /><span class="photo-note">keep going</span></button>
+      </div>
+    </div></section>
+
     <section id="contact"><div class="container">
-      <article class="paper-card contact-card reveal"><div><span class="eyebrow">Contact</span><h2>很高兴，与你在同一片星系相遇。</h2><p>期待销售、客户运营、用户增长或业务分析方向的交流机会。欢迎通过电话或邮件联系我。</p></div><div class="contact-list"><div class="contact-item">电话：<a href="tel:17842275174">178 4227 5174</a></div><div class="contact-item">邮箱：<a href="mailto:1349802098@qq.com">1349802098@qq.com</a></div><div class="contact-item">所在地：中国 · 上海</div><div class="contact-item">求职状态：2027 届硕士毕业生</div></div></article>
+      <article class="paper-card contact-card reveal"><div><span class="eyebrow">Contact</span><h2>很高兴，与你在同一片星系相遇。</h2><p>期待销售、客户运营、用户增长或业务分析方向的交流机会。欢迎通过电话、邮件或 GitHub 联系我。</p></div><div class="contact-list"><div class="contact-item">电话：<a href="tel:17842275174">178 4227 5174</a></div><div class="contact-item">邮箱：<a href="mailto:1349802098@qq.com">1349802098@qq.com</a></div><div class="contact-item">GitHub：<a href="https://github.com/tpos8" target="_blank" rel="noreferrer">github.com/tpos8 ↗</a></div><div class="contact-item">所在地：中国 · 上海</div><div class="contact-item">求职状态：2027 届硕士毕业生</div></div></article>
     </div></section>
   </main>
   <footer>© <span id="year"></span> 林扬洋 · Drawn somewhere in the Milky Way.</footer>
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="生活照片预览"><figure><button id="lightboxClose" type="button" aria-label="关闭照片预览">×</button><img id="lightboxImage" src="" alt="" /></figure></div>
   <script>
     const opening = document.getElementById('opening');
     const enterSite = () => { opening.classList.add('is-dismissed'); sessionStorage.setItem('small-orbit-visited', 'true'); };
@@ -427,6 +466,13 @@
     const navLinks = [...document.querySelectorAll('.nav-links a')];
     const navObserver = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) navLinks.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id)); }), { rootMargin: '-35% 0px -57% 0px' });
     document.querySelectorAll('main section[id]').forEach((section) => navObserver.observe(section));
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const closeLightbox = () => { lightbox.classList.remove('open'); lightbox.setAttribute('aria-hidden', 'true'); };
+    document.querySelectorAll('.life-photo').forEach((photo) => photo.addEventListener('click', () => { const image = photo.querySelector('img'); lightboxImage.src = photo.dataset.photo; lightboxImage.alt = image.alt; lightbox.classList.add('open'); lightbox.setAttribute('aria-hidden', 'false'); }));
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (event) => { if (event.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeLightbox(); });
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
