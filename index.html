@@ -1,1087 +1,432 @@
-<!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
+<!doctype html>
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="林扬洋的个人网页简历：2027 届物理学硕士，具备数据分析、用户增长与独立产品实践的复合背景。" />
-  <meta name="theme-color" content="#0f2744" />
-  <title>林扬洋｜个人网页简历</title>
+  <meta name="description" content="林扬洋的个人网页简历：2027 届物理学硕士，具备销售转化、用户增长与数据分析的复合经历。" />
+  <meta name="theme-color" content="#080a22" />
+  <title>林扬洋｜Sales · Growth · Data</title>
   <style>
     :root {
-      --bg: #f4f7fb;
-      --surface: rgba(255, 255, 255, 0.88);
-      --surface-solid: #ffffff;
-      --surface-soft: #eef4fa;
-      --text: #102237;
-      --muted: #5e7187;
-      --line: #dce5ef;
-      --primary: #0f466e;
-      --primary-2: #0e7191;
-      --accent: #27a7a0;
-      --accent-soft: rgba(39, 167, 160, 0.13);
-      --shadow: 0 22px 60px rgba(17, 54, 88, 0.11);
-      --shadow-soft: 0 12px 30px rgba(17, 54, 88, 0.08);
-      --radius-lg: 28px;
-      --radius-md: 20px;
-      --radius-sm: 13px;
-      --max-width: 1160px;
-    }
-
-    html[data-theme="dark"] {
-      --bg: #09131f;
-      --surface: rgba(16, 31, 47, 0.88);
-      --surface-solid: #102033;
-      --surface-soft: #14283d;
-      --text: #ecf6ff;
-      --muted: #9db1c5;
-      --line: #273d53;
-      --primary: #87c8e7;
-      --primary-2: #54bfd1;
-      --accent: #52d1c5;
-      --accent-soft: rgba(82, 209, 197, 0.13);
-      --shadow: 0 22px 60px rgba(0, 0, 0, 0.30);
-      --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.18);
+      --ink: #f6f0e8;
+      --paper: #11102b;
+      --paper-2: #19143d;
+      --paper-3: #231951;
+      --night: #07081b;
+      --violet: #a992ff;
+      --lilac: #d3c5ff;
+      --blue: #74b8ff;
+      --gold: #f6cf8c;
+      --mist: #c9c5df;
+      --line: rgba(217, 205, 255, .28);
+      --shadow: 0 28px 55px rgba(0, 0, 0, .28);
+      --max: 1160px;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      color: var(--text);
+      overflow-x: hidden;
+      color: var(--ink);
       background:
-        radial-gradient(circle at 8% 2%, rgba(39, 167, 160, 0.14), transparent 28%),
-        radial-gradient(circle at 93% 10%, rgba(14, 113, 145, 0.13), transparent 30%),
-        var(--bg);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
-      line-height: 1.72;
+        radial-gradient(circle at 85% 2%, rgba(135, 99, 255, .18), transparent 24rem),
+        radial-gradient(circle at 8% 20%, rgba(58, 127, 255, .11), transparent 31rem),
+        var(--night);
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.75;
       -webkit-font-smoothing: antialiased;
     }
-
     a { color: inherit; text-decoration: none; }
     button { font: inherit; }
-    img { max-width: 100%; display: block; }
+    img { display: block; max-width: 100%; }
 
-    .page-noise {
+    /* Opening scene */
+    .opening {
       position: fixed;
       inset: 0;
+      z-index: 100;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      color: #fffdf8;
+      background: #050617;
+      transition: opacity .8s ease, visibility .8s ease;
+    }
+    .opening.is-dismissed { opacity: 0; visibility: hidden; pointer-events: none; }
+    .opening::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 5%, rgba(4, 4, 16, .22) 68%, rgba(2, 2, 10, .68));
       pointer-events: none;
-      opacity: 0.24;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");
-      z-index: -1;
     }
+    .opening-galaxy {
+      position: absolute;
+      inset: -4%;
+      z-index: -2;
+      background: url("assets/milky-way-cartoon-oil.png") center / cover no-repeat;
+      animation: space-bloom 4.2s cubic-bezier(.18,.82,.24,1) both;
+    }
+    .opening-galaxy::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .46;
+      background-image: radial-gradient(rgba(255,255,255,.9) .7px, transparent .8px);
+      background-size: 53px 53px;
+      mix-blend-mode: screen;
+      animation: star-drift 12s linear infinite;
+    }
+    .opening-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      justify-items: center;
+      padding: 24px;
+      text-align: center;
+    }
+    .opening-kicker {
+      margin: 0 0 18px;
+      color: rgba(255, 248, 231, .78);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fade-up .7s 1.6s ease forwards;
+    }
+    .earth-button {
+      position: relative;
+      width: clamp(190px, 27vw, 330px);
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      cursor: pointer;
+      background: none;
+      animation: earth-arrive 2.1s .12s cubic-bezier(.14,.85,.19,1) both;
+      transition: transform .36s ease, filter .32s ease;
+    }
+    .earth-button::before {
+      content: "";
+      position: absolute;
+      inset: 5.5%;
+      border: 1.8px solid transparent;
+      border-radius: 49% 51% 50% 48%;
+      transform: rotate(-7deg);
+      transition: border-color .25s ease, box-shadow .25s ease;
+      pointer-events: none;
+    }
+    .earth-button:hover,
+    .earth-button:focus-visible { transform: scale(1.055) rotate(-2deg); outline: none; }
+    .earth-button:hover::before,
+    .earth-button:focus-visible::before {
+      border-color: rgba(255,255,255,.96);
+      box-shadow: 0 0 17px rgba(255,255,255,.82), inset 0 0 14px rgba(255,255,255,.25);
+    }
+    .earth-button:hover .earth { filter: drop-shadow(0 0 8px rgba(255,255,255,.92)) drop-shadow(0 0 24px rgba(166, 179, 255, .66)); }
+    .earth { width: 100%; filter: drop-shadow(0 18px 26px rgba(0,0,0,.46)); transition: filter .25s ease; }
+    .start-button {
+      position: relative;
+      margin-top: clamp(21px, 3vw, 33px);
+      padding: 10px 29px 11px;
+      border: 1.5px solid rgba(255,255,255,.9);
+      border-radius: 4px 8px 5px 7px;
+      color: #fffdf8;
+      cursor: pointer;
+      background: rgba(12, 10, 38, .3);
+      box-shadow: 3px 4px 0 rgba(255,255,255,.15);
+      font-family: "Bradley Hand", "Comic Sans MS", cursive;
+      font-size: 21px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fade-up .7s 1.75s ease forwards;
+      transition: background .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+    .start-button:hover, .start-button:focus-visible {
+      color: #11102b;
+      outline: none;
+      background: #fffdf8;
+      box-shadow: 5px 6px 0 rgba(181, 155, 255, .52);
+      transform: translate(-2px, -2px) rotate(-1deg);
+    }
+    .opening-note { margin: 17px 0 0; color: rgba(255,255,255,.62); font-size: 12px; opacity: 0; animation: fade-up .7s 2s ease forwards; }
 
-    .container {
-      width: min(calc(100% - 38px), var(--max-width));
-      margin: 0 auto;
+    .grain {
+      position: fixed;
+      z-index: 90;
+      inset: 0;
+      pointer-events: none;
+      opacity: .17;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
     }
+    .container { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
 
     .topbar {
       position: sticky;
       top: 0;
       z-index: 20;
-      border-bottom: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
-      background: color-mix(in srgb, var(--bg) 82%, transparent);
+      border-bottom: 1px solid rgba(215, 200, 255, .15);
+      background: rgba(8, 7, 29, .72);
       backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
     }
+    .nav { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 800; letter-spacing: .07em; }
+    .brand-star { color: var(--gold); font-size: 23px; line-height: 1; transform: rotate(-13deg); }
+    .nav-links { display: flex; align-items: center; gap: 3px; }
+    .nav-links a { padding: 8px 11px; border-radius: 7px 10px 7px 9px; color: rgba(245,240,255,.68); font-size: 13px; transition: color .2s, background .2s; }
+    .nav-links a:hover, .nav-links a.active { color: #fff; background: rgba(177, 152, 255, .18); }
+    .nav-cta { padding: 7px 13px; border: 1px solid rgba(246, 207, 140, .7); border-radius: 7px 5px 8px 6px; color: var(--gold); font-size: 12px; font-weight: 700; transition: background .2s, color .2s; }
+    .nav-cta:hover { background: var(--gold); color: #16102c; }
+    .menu { display: none; width: 39px; height: 39px; border: 1px solid var(--line); border-radius: 8px; color: #fff; background: transparent; }
 
-    .nav {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
+    .hero { position: relative; padding: clamp(72px, 11vw, 135px) 0 78px; overflow: hidden; }
+    .hero::before { content: ""; position: absolute; width: 580px; height: 580px; top: -180px; right: -180px; border: 1px solid rgba(200, 184, 255, .17); border-radius: 50%; box-shadow: 0 0 0 45px rgba(147, 119, 255, .025), 0 0 0 104px rgba(147, 119, 255, .018); }
+    .hero::after { content: "✦  ·  ✧  ·  ✦"; position: absolute; right: 8%; bottom: 37px; color: rgba(247, 218, 158, .56); font-size: 17px; letter-spacing: .5em; transform: rotate(-9deg); }
+    .hero-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1.24fr) minmax(270px, .76fr); align-items: center; gap: clamp(30px, 7vw, 100px); }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--gold); font-size: 11px; font-weight: 800; letter-spacing: .23em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 25px; height: 1px; background: currentColor; transform: rotate(-2deg); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 800px; margin: 16px 0 18px; font-family: Georgia, "Songti SC", serif; font-size: clamp(50px, 8vw, 103px); font-weight: 500; letter-spacing: -.07em; line-height: .95; }
+    h1 span { display: block; color: var(--lilac); font-size: .43em; letter-spacing: .08em; line-height: 1.45; }
+    .hero-summary { max-width: 670px; margin: 0; color: var(--mist); font-size: clamp(16px, 2vw, 19px); }
+    .hero-summary strong { color: #fff; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 32px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 47px; padding: 11px 18px; border: 1px solid transparent; border-radius: 7px 11px 7px 10px; font-weight: 800; font-size: 14px; transition: transform .2s, box-shadow .2s, background .2s; }
+    .button:hover { transform: translateY(-3px) rotate(-.7deg); }
+    .button-primary { color: #16102c; background: var(--gold); box-shadow: 4px 5px 0 rgba(246,207,140,.16); }
+    .button-secondary { border-color: var(--line); color: #f3efff; background: rgba(255,255,255,.05); }
+    .button-secondary:hover { background: rgba(255,255,255,.11); }
+    .contact-strip { display: flex; flex-wrap: wrap; gap: 8px 17px; margin-top: 28px; color: rgba(236,231,255,.68); font-size: 13px; }
+    .contact-strip a:hover { color: var(--gold); }
+    .contact-strip span:not(:last-child)::after { content: "·"; margin-left: 17px; color: var(--violet); }
+    .hero-orbit { position: relative; justify-self: center; width: min(100%, 325px); aspect-ratio: 1; }
+    .hero-orbit::before, .hero-orbit::after { content: ""; position: absolute; inset: 1%; border: 1px solid rgba(197, 182, 255, .31); border-radius: 50%; transform: rotate(-24deg) scaleY(.43); }
+    .hero-orbit::after { inset: 14%; border-style: dashed; transform: rotate(30deg) scaleY(.82); opacity: .45; }
+    .portrait { position: absolute; inset: 12%; overflow: hidden; border: 1px solid rgba(255,255,255,.55); border-radius: 51% 49% 48% 52%; background: #312453; box-shadow: 0 0 0 7px rgba(203, 185, 255, .06), 0 24px 40px rgba(0,0,0,.28); transform: rotate(4deg); }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: contrast(1.03) saturate(.85) sepia(.11); }
+    .orbit-label { position: absolute; left: -21px; bottom: 1px; padding: 7px 12px; border: 1px solid rgba(246, 207, 140, .55); border-radius: 7px 4px 7px 5px; color: var(--gold); background: rgba(13, 10, 38, .9); font-size: 11px; font-weight: 700; letter-spacing: .09em; transform: rotate(-8deg); }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-    }
+    main { padding-bottom: 75px; }
+    section { position: relative; padding: 70px 0 5px; scroll-margin-top: 70px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 26px; }
+    h2 { margin: 4px 0 0; font-family: Georgia, "Songti SC", serif; font-size: clamp(34px, 4vw, 52px); font-weight: 500; letter-spacing: -.055em; line-height: 1.18; }
+    .section-heading > p { max-width: 430px; margin: 0; color: var(--mist); font-size: 14px; text-align: right; }
+    .paper-card { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 18px 23px 20px 25px; background: linear-gradient(135deg, rgba(36,27,81,.92), rgba(18,16,47,.92)); box-shadow: var(--shadow); }
+    .paper-card::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .22; background-image: radial-gradient(rgba(255,255,255,.22) .55px, transparent .75px); background-size: 6px 6px; mix-blend-mode: soft-light; }
 
-    .brand-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      color: white;
-      background: linear-gradient(135deg, #0f466e, #27a7a0);
-      box-shadow: 0 8px 18px rgba(15, 70, 110, 0.22);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .nav-links a {
-      padding: 9px 12px;
-      border-radius: 10px;
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 650;
-      transition: .2s ease;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--primary);
-      background: var(--accent-soft);
-    }
-
-    .nav-actions { display: flex; align-items: center; gap: 9px; }
-    .icon-btn {
-      width: 42px;
-      height: 42px;
-      border: 1px solid var(--line);
-      border-radius: 13px;
-      display: grid;
-      place-items: center;
-      color: var(--text);
-      background: var(--surface);
-      cursor: pointer;
-      transition: transform .2s ease, border-color .2s ease, background .2s ease;
-    }
-    .icon-btn:hover { transform: translateY(-2px); border-color: var(--accent); }
-    .menu-btn { display: none; }
-
-    .hero {
-      padding: 78px 0 48px;
-    }
-
-    .hero-card {
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1.45fr 0.78fr;
-      gap: 44px;
-      align-items: center;
-      padding: clamp(30px, 6vw, 70px);
-      border: 1px solid rgba(255,255,255,0.48);
-      border-radius: 36px;
-      background:
-        linear-gradient(145deg, color-mix(in srgb, var(--surface-solid) 96%, transparent), color-mix(in srgb, var(--surface-soft) 86%, transparent));
-      box-shadow: var(--shadow);
-      isolation: isolate;
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      width: 460px;
-      height: 460px;
-      right: -170px;
-      top: -220px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(39, 167, 160, 0.27), transparent 65%);
-      z-index: -1;
-    }
-
-    .hero-card::after {
-      content: "";
-      position: absolute;
-      width: 280px;
-      height: 280px;
-      left: 28%;
-      bottom: -220px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(15, 70, 110, 0.16), transparent 67%);
-      z-index: -1;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      color: var(--primary-2);
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 22px;
-      height: 2px;
-      border-radius: 99px;
-      background: currentColor;
-    }
-
-    h1 {
-      margin: 17px 0 7px;
-      font-size: clamp(44px, 8vw, 76px);
-      line-height: 1.08;
-      letter-spacing: -0.045em;
-    }
-
-    .hero-role {
-      margin: 0 0 20px;
-      color: var(--primary);
-      font-size: clamp(18px, 2vw, 24px);
-      font-weight: 760;
-    }
-
-    .hero-summary {
-      max-width: 680px;
-      margin: 0;
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
-    }
-
-    .btn {
-      min-height: 46px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      padding: 11px 18px;
-      border: 1px solid transparent;
-      border-radius: 14px;
-      font-weight: 760;
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-    }
-
-    .btn:hover { transform: translateY(-2px); }
-    .btn-primary {
-      color: white;
-      background: linear-gradient(135deg, #0f466e, #0e7191);
-      box-shadow: 0 10px 22px rgba(15, 70, 110, 0.23);
-    }
-    .btn-secondary {
-      color: var(--primary);
-      border-color: var(--line);
-      background: var(--surface);
-    }
-
-    .contact-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 18px;
-      margin-top: 27px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .contact-row a,
-    .contact-row span {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .portrait-panel {
-      justify-self: center;
-      width: min(100%, 300px);
-      position: relative;
-    }
-
-    .portrait-frame {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 4 / 5;
-      border: 10px solid color-mix(in srgb, var(--surface-solid) 88%, transparent);
-      border-radius: 34px;
-      background: var(--surface-soft);
-      box-shadow: 0 26px 50px rgba(21, 55, 82, 0.20);
-      transform: rotate(2deg);
-    }
-
-    .portrait-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      transform: scale(1.03);
-    }
-
-    .availability {
-      position: absolute;
-      left: -24px;
-      bottom: 25px;
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      padding: 11px 14px;
-      border: 1px solid rgba(255,255,255,.5);
-      border-radius: 14px;
-      color: var(--text);
-      background: color-mix(in srgb, var(--surface-solid) 92%, transparent);
-      box-shadow: var(--shadow-soft);
-      font-size: 13px;
-      font-weight: 730;
-      transform: rotate(-2deg);
-    }
-
-    .dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 5px var(--accent-soft);
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 26px;
-    }
-
-    .stat {
-      padding: 18px 20px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: var(--surface);
-      box-shadow: var(--shadow-soft);
-    }
-    .stat strong {
-      display: block;
-      color: var(--primary);
-      font-size: 26px;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-    }
-    .stat span { color: var(--muted); font-size: 13px; }
-
-    main { padding-bottom: 60px; }
-    section { padding: 62px 0 12px; scroll-margin-top: 82px; }
-
-    .section-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 24px;
-      margin-bottom: 26px;
-    }
-    .section-heading h2 {
-      margin: 5px 0 0;
-      font-size: clamp(30px, 4.5vw, 46px);
-      line-height: 1.18;
-      letter-spacing: -0.035em;
-    }
-    .section-heading p {
-      max-width: 440px;
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      text-align: right;
-    }
-
-    .card {
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: var(--surface);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 20px;
-    }
+    .about-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 18px; }
     .about-copy { padding: 30px; }
-    .about-copy p { margin: 0 0 14px; color: var(--muted); }
+    .about-copy p { margin: 0 0 14px; color: var(--mist); }
     .about-copy p:last-child { margin-bottom: 0; }
+    .about-copy strong { color: var(--gold); }
+    .fact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 14px; }
+    .fact { padding: 14px; border: 1px solid rgba(212,199,255,.13); border-radius: 9px 13px 10px 14px; background: rgba(255,255,255,.035); }
+    .fact b { display: block; color: var(--lilac); font-size: 11px; font-weight: 700; letter-spacing: .09em; }
+    .fact span { display: block; margin-top: 4px; font-size: 14px; font-weight: 700; }
 
-    .info-card { padding: 25px; }
-    .info-list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin: 0;
-    }
-    .info-item {
-      padding: 14px;
-      border-radius: 14px;
-      background: var(--surface-soft);
-    }
-    .info-item dt {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 650;
-    }
-    .info-item dd {
-      margin: 2px 0 0;
-      font-size: 15px;
-      font-weight: 760;
-    }
+    .route { position: relative; display: grid; gap: 15px; }
+    .route::before { content: ""; position: absolute; left: 29px; top: 32px; bottom: 33px; border-left: 1px dashed rgba(201, 181, 255, .52); }
+    .route-item { display: grid; grid-template-columns: 58px 1fr; gap: 18px; padding: 25px 27px 26px 14px; }
+    .route-dot { position: relative; z-index: 1; width: 15px; height: 15px; margin: 7px auto 0; border: 3px solid var(--paper-2); border-radius: 48% 52% 51% 49%; background: var(--gold); box-shadow: 0 0 0 4px rgba(246,207,140,.13); }
+    .route-meta { display: flex; justify-content: space-between; gap: 15px; margin-bottom: 5px; color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+    .route-item h3 { margin: 0; font-size: 20px; }
+    .route-item h4 { margin: 4px 0 10px; color: var(--lilac); font-size: 14px; font-weight: 650; }
+    .route-item p { margin: 0; color: var(--mist); font-size: 14px; }
 
-    .timeline {
-      position: relative;
-      display: grid;
-      gap: 18px;
-    }
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 24px;
-      top: 35px;
-      bottom: 35px;
-      width: 2px;
-      background: linear-gradient(var(--accent), var(--line));
-    }
-    .timeline-item {
-      position: relative;
-      display: grid;
-      grid-template-columns: 50px 1fr;
-      gap: 20px;
-      padding: 26px 28px 26px 18px;
-    }
-    .timeline-dot {
-      position: relative;
-      z-index: 2;
-      width: 14px;
-      height: 14px;
-      margin: 9px auto 0;
-      border: 4px solid var(--surface-solid);
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 4px var(--accent-soft);
-    }
-    .timeline-meta {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 8px 18px;
-      margin-bottom: 6px;
-      color: var(--primary-2);
-      font-size: 13px;
-      font-weight: 760;
-    }
-    .timeline-item h3 { margin: 0; font-size: 22px; }
-    .timeline-item h4 { margin: 5px 0 10px; color: var(--muted); font-size: 15px; }
-    .timeline-item p { margin: 0; color: var(--muted); }
-    .course-list,
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 15px;
-    }
-    .tag {
-      padding: 6px 10px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--primary);
-      background: color-mix(in srgb, var(--surface-soft) 78%, transparent);
-      font-size: 12px;
-      font-weight: 700;
-    }
+    .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .project { min-height: 100%; padding: 28px; transition: transform .25s ease, border-color .25s ease; }
+    .project.featured { grid-column: span 2; background: linear-gradient(120deg, rgba(53,35,107,.97), rgba(20,20,57,.96)); }
+    .project:hover { border-color: rgba(246,207,140,.68); transform: translateY(-5px) rotate(-.25deg); }
+    .project-number { color: var(--gold); font-size: 11px; font-weight: 800; letter-spacing: .13em; }
+    .project h3 { margin: 9px 0 4px; font-size: 22px; line-height: 1.35; }
+    .project-role { color: var(--lilac); font-size: 14px; font-weight: 700; }
+    .project ul { margin: 17px 0 0; padding: 0; list-style: none; color: var(--mist); font-size: 14px; }
+    .project li { position: relative; margin-bottom: 10px; padding-left: 17px; }
+    .project li::before { content: "✦"; position: absolute; left: 0; top: 1px; color: var(--gold); font-size: 10px; }
+    .project-link { display: inline-block; margin-top: 10px; color: var(--gold); font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
+    .tag { padding: 4px 9px; border: 1px solid rgba(203,184,255,.26); border-radius: 999px 930px 990px 940px; color: #e9e3ff; background: rgba(255,255,255,.045); font-size: 11px; font-weight: 650; }
 
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-    }
-    .project-card {
-      position: relative;
-      overflow: hidden;
-      padding: 29px;
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-    }
-    .featured-project { grid-column: 1 / -1; }
-    .project-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      margin-top: 13px;
-      color: var(--primary-2);
-      font-size: 13px;
-      font-weight: 780;
-    }
-    .project-link:hover { color: var(--accent); }
-    .project-card:hover {
-      transform: translateY(-5px);
-      border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
-      box-shadow: var(--shadow);
-    }
-    .project-card::after {
-      content: "";
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      right: -80px;
-      top: -95px;
-      border-radius: 50%;
-      background: radial-gradient(circle, var(--accent-soft), transparent 70%);
-      pointer-events: none;
-    }
-    .project-number {
-      color: var(--accent);
-      font-size: 13px;
-      font-weight: 850;
-      letter-spacing: .13em;
-    }
-    .project-card h3 { margin: 10px 0 6px; font-size: 22px; line-height: 1.35; }
-    .project-role { color: var(--primary-2); font-size: 14px; font-weight: 760; }
-    .project-card ul {
-      margin: 18px 0 0;
-      padding: 0;
-      list-style: none;
-      color: var(--muted);
-    }
-    .project-card li {
-      position: relative;
-      padding-left: 19px;
-      margin-bottom: 11px;
-    }
-    .project-card li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: .72em;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
+    .skills-grid, .strength-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .skill, .strength { padding: 24px; }
+    .skill-mark, .strength-index { width: 38px; height: 38px; display: grid; place-items: center; margin-bottom: 14px; border: 1px solid rgba(246,207,140,.55); border-radius: 54% 46% 52% 48%; color: var(--gold); font-family: Georgia, serif; font-size: 19px; }
+    .skill h3, .strength h3 { margin: 0 0 7px; font-size: 17px; }
+    .skill p, .strength p { margin: 0; color: var(--mist); font-size: 13px; }
+    .certificate { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 17px; padding: 19px 24px; }
+    .certificate b { color: var(--gold); }
+    .certificate div { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 7px; }
 
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-    .skill-card { padding: 25px; }
-    .skill-icon {
-      width: 45px;
-      height: 45px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      color: var(--primary);
-      background: var(--accent-soft);
-    }
-    .skill-card h3 { margin: 15px 0 8px; font-size: 19px; }
-    .skill-card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .contact-card { display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 32px; padding: clamp(28px, 5vw, 55px); background: linear-gradient(130deg, #4d358c, #20184d 60%, #182e68); }
+    .contact-card::before { content: ""; position: absolute; right: -150px; bottom: -220px; width: 460px; height: 460px; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; box-shadow: 0 0 0 47px rgba(255,255,255,.035), 0 0 0 100px rgba(255,255,255,.025); }
+    .contact-card h2 { margin: 7px 0 12px; }
+    .contact-card p { margin: 0; color: rgba(255,255,255,.72); }
+    .contact-list { position: relative; z-index: 1; display: grid; gap: 9px; }
+    .contact-item { padding: 11px 13px; border: 1px solid rgba(255,255,255,.18); border-radius: 9px 13px 10px 14px; background: rgba(5,4,22,.16); font-size: 14px; }
+    .contact-item a:hover { color: var(--gold); }
+    footer { padding: 35px 0 45px; color: rgba(215,205,255,.55); text-align: center; font-size: 12px; }
 
-    .certificate-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-top: 18px;
-      padding: 22px 24px;
-    }
-    .certificate-bar strong { font-size: 17px; }
-    .certificate-tags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 9px; }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .66s ease, transform .66s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @keyframes space-bloom { from { transform: scale(.76); filter: blur(2px) brightness(.6); } to { transform: scale(1); filter: blur(0) brightness(1); } }
+    @keyframes earth-arrive { 0% { opacity: 0; transform: scale(.08); filter: blur(12px); } 35% { opacity: 1; } 76% { transform: scale(1.08); filter: blur(0); } 100% { transform: scale(1); filter: blur(0); } }
+    @keyframes fade-up { to { opacity: 1; transform: translateY(0); } from { transform: translateY(10px); } }
+    @keyframes star-drift { to { transform: translate3d(-53px, 53px, 0); } }
 
-    .traits {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-    .trait { padding: 26px; }
-    .trait-index {
-      width: 36px;
-      height: 36px;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      color: white;
-      background: linear-gradient(135deg, #0f466e, #27a7a0);
-      font-weight: 850;
-    }
-    .trait h3 { margin: 16px 0 7px; font-size: 18px; }
-    .trait p { margin: 0; color: var(--muted); font-size: 14px; }
-
-    .contact-card {
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 40px;
-      padding: clamp(28px, 5vw, 56px);
-      color: white;
-      border: none;
-      background: linear-gradient(135deg, #0c3555 0%, #0e6280 58%, #198e8a 100%);
-      box-shadow: var(--shadow);
-    }
-    .contact-card::after {
-      content: "";
-      position: absolute;
-      right: -130px;
-      bottom: -180px;
-      width: 420px;
-      height: 420px;
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 50%;
-      box-shadow: 0 0 0 45px rgba(255,255,255,.04), 0 0 0 90px rgba(255,255,255,.025);
-    }
-    .contact-card h2 { margin: 8px 0 13px; font-size: clamp(30px, 4.5vw, 48px); line-height: 1.16; }
-    .contact-card p { margin: 0; color: rgba(255,255,255,.78); }
-    .contact-items {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      gap: 11px;
-      align-content: center;
-    }
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 13px 15px;
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 14px;
-      background: rgba(255,255,255,.08);
-      backdrop-filter: blur(8px);
-    }
-    .contact-item svg { flex: 0 0 auto; }
-
-    footer {
-      padding: 34px 0 48px;
-      color: var(--muted);
-      text-align: center;
-      font-size: 13px;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity .65s ease, transform .65s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    @media (max-width: 900px) {
-      .hero-card { grid-template-columns: 1fr; }
-      .portrait-panel { grid-row: 1; width: 240px; }
-      .about-grid, .contact-card { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @media (max-width: 850px) {
+      .hero-grid, .about-grid, .contact-card { grid-template-columns: 1fr; }
+      .hero-orbit { grid-row: 1; width: min(64vw, 290px); }
       .section-heading { align-items: start; flex-direction: column; }
-      .section-heading p { text-align: left; }
-      .nav-links {
-        position: fixed;
-        top: 72px;
-        left: 19px;
-        right: 19px;
-        display: none;
-        flex-direction: column;
-        align-items: stretch;
-        padding: 12px;
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        background: var(--surface-solid);
-        box-shadow: var(--shadow);
-      }
+      .section-heading > p { text-align: left; }
+      .skills-grid, .strength-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { position: fixed; top: 70px; left: 20px; right: 20px; display: none; flex-direction: column; align-items: stretch; padding: 10px; border: 1px solid var(--line); border-radius: 14px; background: #11102b; box-shadow: var(--shadow); }
       .nav-links.open { display: flex; }
-      .menu-btn { display: grid; }
+      .menu { display: block; }
+      .nav-cta { display: none; }
     }
-
-    @media (max-width: 680px) {
-      .hero { padding-top: 40px; }
-      .hero-card { padding: 28px 22px 34px; border-radius: 26px; }
-      .project-grid, .traits, .skills-grid { grid-template-columns: 1fr; }
-      .featured-project { grid-column: auto; }
-      .stats { grid-template-columns: 1fr; }
-      .info-list { grid-template-columns: 1fr; }
-      .timeline-item { grid-template-columns: 40px 1fr; padding-right: 20px; }
-      .timeline::before { left: 19px; }
-      .certificate-bar { align-items: flex-start; flex-direction: column; }
-      .certificate-tags { justify-content: flex-start; }
-      .brand span:last-child { display: none; }
+    @media (max-width: 580px) {
+      .container { width: min(calc(100% - 30px), var(--max)); }
+      .hero { padding-top: 64px; }
+      .project-grid, .skills-grid, .strength-grid { grid-template-columns: 1fr; }
+      .project.featured { grid-column: auto; }
+      .fact-grid { grid-template-columns: 1fr 1fr; }
+      .route-item { grid-template-columns: 44px 1fr; padding-right: 19px; }
+      .route::before { left: 22px; }
+      .route-meta { display: grid; }
+      .certificate { align-items: start; flex-direction: column; }
+      .certificate div { justify-content: flex-start; }
+      .brand-text { display: none; }
+      h1 { font-size: clamp(48px, 17vw, 78px); }
     }
-
-    @media print {
-      :root {
-        --bg: #fff;
-        --surface: #fff;
-        --surface-solid: #fff;
-        --surface-soft: #f5f7fa;
-        --text: #111;
-        --muted: #444;
-        --line: #d8dde4;
-        --shadow: none;
-        --shadow-soft: none;
-      }
-      body { background: #fff; font-size: 11pt; }
-      .topbar, .hero-actions, .page-noise { display: none !important; }
-      .hero { padding: 10mm 0 4mm; }
-      .hero-card { box-shadow: none; border-color: #ddd; padding: 10mm; }
-      .portrait-panel { width: 48mm; }
-      section { padding: 7mm 0 0; }
-      .card, .project-card, .skill-card, .trait { break-inside: avoid; box-shadow: none; }
-      .reveal { opacity: 1 !important; transform: none !important; }
-      .contact-card { background: #173d5a !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-      footer { padding-bottom: 0; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
     }
   </style>
 </head>
 <body>
-  <div class="page-noise"></div>
+  <div class="opening" id="opening" aria-label="网站启动页">
+    <div class="opening-galaxy"></div>
+    <div class="opening-content">
+      <p class="opening-kicker">small orbit · personal universe</p>
+      <button class="earth-button" id="earthButton" type="button" aria-label="进入林扬洋的个人主页">
+        <img class="earth" src="assets/earth-cartoon-oil-no-face.png" alt="卡通油画手绘地球" />
+      </button>
+      <button class="start-button" id="startButton" type="button">start</button>
+      <p class="opening-note">hover the Earth · click to explore</p>
+    </div>
+  </div>
 
+  <div class="grain"></div>
   <header class="topbar">
     <div class="container nav">
-      <a class="brand" href="#top" aria-label="返回顶部">
-        <span class="brand-mark">LY</span>
-        <span>林扬洋 · RESUME</span>
-      </a>
-
+      <a class="brand" href="#top" aria-label="回到顶部"><span class="brand-star">✦</span><span class="brand-text">林扬洋 · SMALL ORBIT</span></a>
       <nav class="nav-links" id="navLinks" aria-label="页面导航">
-        <a href="#about">关于我</a>
-        <a href="#education">教育背景</a>
-        <a href="#projects">项目经历</a>
-        <a href="#skills">专业技能</a>
-        <a href="#contact">联系我</a>
+        <a href="#about">关于我</a><a href="#education">教育</a><a href="#experience">经历</a><a href="#projects">项目</a><a href="#skills">技能</a>
       </nav>
-
-      <div class="nav-actions">
-        <button class="icon-btn" id="themeToggle" type="button" aria-label="切换深色模式" title="切换深色模式">
-          <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="4"></circle>
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.41M17.66 6.34l1.41-1.41"></path>
-          </svg>
-        </button>
-        <button class="icon-btn menu-btn" id="menuToggle" type="button" aria-label="打开菜单" title="菜单">
-          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-            <path d="M4 7h16M4 12h16M4 17h16"></path>
-          </svg>
-        </button>
-      </div>
+      <div><a class="nav-cta" href="#contact">与我联系 ↗</a><button class="menu" id="menuButton" type="button" aria-label="打开导航菜单">☰</button></div>
     </div>
   </header>
 
-  <div id="top"></div>
-  <div class="container hero">
-    <article class="hero-card reveal">
-      <div>
-        <span class="eyebrow">Product · Data · AI</span>
-        <h1>林扬洋</h1>
-        <p class="hero-role">2027 届物理学硕士｜产品实践｜数据分析｜用户增长</p>
-        <p class="hero-summary">
-          具备数据分析、用户增长与独立产品实践的复合背景。能够从用户场景出发拆解需求，结合数据验证、AI 协同开发与版本迭代推进产品落地；熟悉 Python、SQL、Power BI 等数据工具，并使用 Codex 完成移动端产品从需求定义、开发调试到官网部署的 0-1 实践。
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="林扬洋_2027届.pdf" download>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"></path><path d="m7 10 5 5 5-5"></path><path d="M5 21h14"></path></svg>
-            下载 PDF 简历
-          </a>
-          <a class="btn btn-secondary" href="mailto:1349802098@qq.com">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>
-            发送邮件
-          </a>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <span class="eyebrow">Sales · Growth · Data</span>
+          <h1>林扬洋<span>把每一次连接，变成可持续的增长。</span></h1>
+          <p class="hero-summary">2027 届物理学硕士。具备<strong>线下零售销售、客户需求沟通、渠道获客、私域运营与数据分析</strong>的复合实践，习惯从真实场景出发，推动一件事从想法走到结果。</p>
+          <div class="hero-actions"><a class="button button-primary" href="#experience">查看我的经历 ↓</a><a class="button button-secondary" href="#contact">联系我</a></div>
+          <div class="contact-strip"><span><a href="tel:17842275174">178 4227 5174</a></span><span><a href="mailto:1349802098@qq.com">1349802098@qq.com</a></span><span>上海 · 硕士在读</span></div>
         </div>
-
-        <div class="contact-row">
-          <a href="tel:17842275174">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"></path></svg>
-            178 4227 5174
-          </a>
-          <a href="mailto:1349802098@qq.com">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"></path><path d="m4 6 8 6 8-6"></path></svg>
-            1349802098@qq.com
-          </a>
-          <span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>
-            上海
-          </span>
-        </div>
-
-        <div class="stats">
-          <div class="stat"><strong>3.7</strong><span>硕士阶段 GPA / 4.0</span></div>
-          <div class="stat"><strong>108 万+</strong><span>TESS 光变曲线数据规模</span></div>
-          <div class="stat"><strong>3 项</strong><span>产品、数据与增长项目实践</span></div>
-        </div>
-      </div>
-
-      <div class="portrait-panel">
-        <div class="portrait-frame">
-          <img src="assets/avatar.png" alt="林扬洋证件照" />
-        </div>
-        <div class="availability"><span class="dot"></span>现居上海 · 硕士在读</div>
-      </div>
-    </article>
-  </div>
-
-  <main>
-    <section id="about">
-      <div class="container">
-        <div class="section-heading reveal">
-          <div><span class="eyebrow">Profile</span><h2>关于我</h2></div>
-          <p>从用户场景出发拆解需求，以数据验证判断，并推动产品与增长方案落地。</p>
-        </div>
-
-        <div class="about-grid">
-          <article class="card about-copy reveal">
-            <p>目前就读于上海大学理学院物理学硕士专业，具备扎实的数理基础，以及科研数据分析、统计建模和可视化经验。</p>
-            <p>围绕真实用户场景，完成过移动端产品从需求定义、AI 协同开发、测试迭代到官网部署的 0-1 实践；同时参与用户增长体系搭建，覆盖内容获客、关键词触达与私域裂变。</p>
-            <p><strong>核心能力：</strong>用户需求拆解｜AI 协同开发｜数据分析｜版本迭代｜独立部署。</p>
-          </article>
-
-          <aside class="card info-card reveal">
-            <dl class="info-list">
-              <div class="info-item"><dt>出生年月</dt><dd>2001.10</dd></div>
-              <div class="info-item"><dt>最高学历</dt><dd>硕士在读</dd></div>
-              <div class="info-item"><dt>政治面貌</dt><dd>共青团员</dd></div>
-              <div class="info-item"><dt>民族</dt><dd>汉族</dd></div>
-              <div class="info-item"><dt>现居城市</dt><dd>上海</dd></div>
-              <div class="info-item"><dt>英语能力</dt><dd>CET-4</dd></div>
-            </dl>
-          </aside>
+        <div class="hero-orbit reveal">
+          <div class="portrait"><img src="assets/avatar.png" alt="林扬洋照片" /></div>
+          <span class="orbit-label">AVAILABLE · 2027</span>
         </div>
       </div>
     </section>
 
-    <section id="education">
-      <div class="container">
-        <div class="section-heading reveal">
-          <div><span class="eyebrow">Education</span><h2>教育背景</h2></div>
-          <p>从应用物理到物理学硕士，持续强化数理基础、科研能力与数据方法。</p>
-        </div>
-
-        <div class="timeline">
-          <article class="card timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div>
-              <div class="timeline-meta"><span>2024.09 - 至今</span><span>GPA 3.7 / 4.0</span></div>
-              <h3>上海大学 · 理学院</h3>
-              <h4>物理学（硕士）</h4>
-              <p><strong>奖项：</strong>2024-2025 上海大学学业奖学金、2024-2025 上海天文台学业奖学金</p>
-              <div class="course-list">
-                <span class="tag">高等量子力学 92</span>
-                <span class="tag">共形场论 95</span>
-                <span class="tag">数值方法与人工智能 91</span>
-                <span class="tag">高等光学 88</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="card timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div>
-              <div class="timeline-meta"><span>2020.09 - 2024.06</span><span>GPA 2.88 / 4.0</span></div>
-              <h3>海南大学 · 物理与光电工程学院</h3>
-              <h4>应用物理学（本科）</h4>
-              <p>系统学习高等数学、线性代数、概率论与统计物理、力学、热学、电磁学、数学物理方法、量子力学与电动力学等课程。</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="container">
-        <div class="section-heading reveal">
-          <div><span class="eyebrow">Projects</span><h2>项目经历</h2></div>
-          <p>覆盖独立产品、科研数据分析与用户增长，形成“理解需求—验证方案—迭代落地”的完整能力链。</p>
-        </div>
-
-        <div class="project-grid">
-          <article class="card project-card featured-project reveal">
-            <span class="project-number">PROJECT 01 · 2026.06 - 至今</span>
-            <h3>Do or Not 极简决策辅助 App</h3>
-            <div class="project-role">产品负责人 / 独立开发者</div>
-            <a class="project-link" href="https://do.smallorbit.cn" target="_blank" rel="noopener noreferrer" aria-label="访问 Do or Not 项目官网">
-              项目官网：do.smallorbit.cn
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
-            </a>
-            <ul>
-              <li><strong>产品定义与需求拆解：</strong>围绕“选择困难”场景设计极简决策产品，将传统签筒交互转化为“摇动手机抽签”，仅输出 Do / Not 两种结果；明确目标用户、核心流程、交互反馈与功能边界，避免功能堆叠。</li>
-              <li><strong>AI 协同研发与测试：</strong>使用 Codex 辅助进行 Flutter 代码生成、页面调整、启动流程优化与问题定位，结合 Android Studio 完成运行测试和 APK 构建，使用 Git / GitHub 进行版本管理。</li>
-              <li><strong>迭代与问题闭环：</strong>围绕启动页展示、摇动交互、安装包构建与下载路径等关键节点开展测试，定位并修复影响使用体验的问题，持续优化产品可用性与发布稳定性。</li>
-              <li><strong>发布链路搭建：</strong>完成项目官网的信息架构与页面制作，配置应用介绍和 APK 下载入口，并部署独立域名，形成从需求、设计、开发、测试到发布的完整 0-1 产品闭环。</li>
-            </ul>
-            <div class="tag-list">
-              <span class="tag">产品定义</span><span class="tag">需求拆解</span><span class="tag">Codex</span><span class="tag">Flutter</span><span class="tag">Android Studio</span><span class="tag">Git / GitHub</span><span class="tag">独立部署</span>
-            </div>
-          </article>
-
-          <article class="card project-card reveal">
-            <span class="project-number">PROJECT 02 · 2023.06 - 2024.06</span>
-            <h3>基于 TESS 恒星光变曲线的磁活动特征分析</h3>
-            <div class="project-role">数据分析助理</div>
-            <ul>
-              <li><strong>数据获取与处理：</strong>基于 TESS 空间望远镜近年约 108 万条光变曲线数据，使用 SQL 从数据库筛选与抽取数据，并利用 NumPy、Pandas 完成原始光变序列的数据清洗、质量过滤与特征提取。</li>
-              <li><strong>分析流程构建：</strong>构建完整光变分析流程，包括 Lomb-Scargle 周期搜索与 MCMC 拟合，稳健提取恒星旋转周期及磁活动参数。</li>
-              <li><strong>可视化与验证：</strong>结合 Matplotlib 可视化与统计分析验证周期和磁活动指标的相关性，为恒星磁活动机制研究提供定量支持。</li>
-            </ul>
-            <div class="tag-list">
-              <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">MCMC</span><span class="tag">Matplotlib</span>
-            </div>
-          </article>
-
-          <article class="card project-card reveal">
-            <span class="project-number">PROJECT 03 · 2025.05 - 至今</span>
-            <h3>家教平台教师端用户增长体系搭建与优化</h3>
-            <div class="project-role">用户增长负责人</div>
-            <ul>
-              <li><strong>多渠道内容矩阵与获客优化：</strong>负责小红书、抖音、闲鱼等核心社媒平台的内容分发与引流，建立图文及视频内高转化内容，使单篇帖子平均曝光量显著提升，并有效降低平台获客成本。</li>
-              <li><strong>精准人群渗透与竞品截流：</strong>搭建“大学生兼职”“找家教”等行业关键词库，对同业高热度帖子评论区，以及求职大学生、家长用户发帖进行精细化截流；通过定向跟进，提高私信有效回复率。</li>
-              <li><strong>私域增长与裂变机制：</strong>设计并主导落地“老带新”阶梯式奖励推荐机制，利用物质奖励与平台曝光资源双重驱动，激发存量教师的社交网络价值。</li>
-            </ul>
-            <div class="tag-list">
-              <span class="tag">用户增长</span><span class="tag">内容运营</span><span class="tag">私域裂变</span><span class="tag">关键词获客</span><span class="tag">增长策略</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills">
-      <div class="container">
-        <div class="section-heading reveal">
-          <div><span class="eyebrow">Skills</span><h2>专业技能</h2></div>
-          <p>覆盖产品实践、AI 协同开发、数据处理、商业智能与智能体部署。</p>
-        </div>
-
-        <div class="skills-grid">
-          <article class="card skill-card reveal">
-            <div class="skill-icon">
-              <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"></path></svg>
-            </div>
-            <h3>AI 与产品实践</h3>
-            <p>熟悉用户场景分析、需求拆解、功能流程设计、版本迭代与测试验证；能够使用 Codex 辅助完成代码生成、调试、Bug 定位和技术方案理解，具备从 0 到 1 推进轻量产品落地的实践。</p>
-          </article>
-
-          <article class="card skill-card reveal">
-            <div class="skill-icon">
-              <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8 3 12l4 4M17 8l4 4-4 4M14 4l-4 16"></path></svg>
-            </div>
-            <h3>Python 数据分析</h3>
-            <p>熟练使用 Python，掌握 Pandas、NumPy、Matplotlib 等数据处理与可视化库，了解 Scikit-learn 和 PyTorch，能够完成数据读取、清洗、建模与可视化分析。</p>
-          </article>
-
-          <article class="card skill-card reveal">
-            <div class="skill-icon">
-              <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"></ellipse><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"></path><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"></path></svg>
-            </div>
-            <h3>SQL 数据库</h3>
-            <p>熟悉 SQL 数据库操作，能够进行多表关联查询及增删改查操作，可用于数据抽取、清洗与分析任务。</p>
-          </article>
-
-          <article class="card skill-card reveal">
-            <div class="skill-icon">
-              <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"></path><path d="M4 9h16M9 4v16"></path></svg>
-            </div>
-            <h3>Excel & Power Query</h3>
-            <p>掌握 Excel 基础函数、VLOOKUP、XLOOKUP、数据透视表和图表；掌握 Power Query GUI 操作并了解常用 M 语言函数，可用于数据清洗与转换。</p>
-          </article>
-
-          <article class="card skill-card reveal">
-            <div class="skill-icon">
-              <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M7 17V9M12 17V6M17 17v-4"></path></svg>
-            </div>
-            <h3>Power BI</h3>
-            <p>熟练使用 Power BI，可建立表关系、创建度量值与辅助列，运用 DAX、切片器和各类可视化图表设计交互式报表。</p>
-          </article>
-
-          <article class="card skill-card reveal">
-            <div class="skill-icon">
-              <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a5 5 0 0 0-5 5v2a5 5 0 0 0 10 0V7a5 5 0 0 0-5-5Z"></path><path d="M5 22v-2a7 7 0 0 1 14 0v2M19 8h2M3 8h2"></path></svg>
-            </div>
-            <h3>智能体与开发工具</h3>
-            <p>熟练 OpenClaw 的本地化部署与 Skill 扩展开发，能够将 AI Agent 接入飞书、QQ 等平台；熟悉 Flutter、Android Studio、Git / GitHub 的基础开发与协作流程。</p>
-          </article>
-        </div>
-
-        <div class="card certificate-bar reveal">
-          <strong>证书与语言能力</strong>
-          <div class="certificate-tags">
-            <span class="tag">大学英语四级（CET-4）</span>
-            <span class="tag">普通话二级乙等</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="self-assessment">
-      <div class="container">
-        <div class="section-heading reveal">
-          <div><span class="eyebrow">Strengths</span><h2>个人优势</h2></div>
-          <p>重执行、能自驱、善学习，也能在协作中保持清晰沟通。</p>
-        </div>
-
-        <div class="traits">
-          <article class="card trait reveal"><div class="trait-index">01</div><h3>目标清晰，执行细致</h3><p>习惯在任务开始前先确认目标和计划，按步骤推进，并通过复盘持续优化。</p></article>
-          <article class="card trait reveal"><div class="trait-index">02</div><h3>自律与长期坚持</h3><p>曾通过持续训练和饮食管理，在三个月内减重接近 20 公斤，具备较强的自我管理能力。</p></article>
-          <article class="card trait reveal"><div class="trait-index">03</div><h3>快速学习与协作</h3><p>对新事物接受度高，能够主动查阅资料、快速上手，并在团队中顺畅沟通、主动协助。</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <article class="card contact-card reveal">
-          <div>
-            <span class="eyebrow" style="color:#8ff0e6">Contact</span>
-            <h2>期待与更多有价值的项目相遇</h2>
-            <p>欢迎通过电话或邮件联系，进一步了解我的项目经历与能力。</p>
-          </div>
-          <div class="contact-items">
-            <a class="contact-item" href="tel:17842275174">
-              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"></path></svg>
-              <span>178 4227 5174</span>
-            </a>
-            <a class="contact-item" href="mailto:1349802098@qq.com">
-              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>
-              <span>1349802098@qq.com</span>
-            </a>
-            <div class="contact-item">
-              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>
-              <span>中国 · 上海</span>
-            </div>
-          </div>
+    <section id="about"><div class="container">
+      <div class="section-heading reveal"><div><span class="eyebrow">Profile</span><h2>关于我</h2></div><p>面向销售与客户运营场景，既理解人，也愿意把结果做清楚。</p></div>
+      <div class="about-grid">
+        <article class="paper-card about-copy reveal">
+          <p>我目前就读于上海大学理学院物理学硕士。物理训练让我养成以问题为起点、用数据验证判断的习惯；而线下零售、用户增长与独立产品实践，则让我更关注每一次沟通背后的真实需求。</p>
+          <p>在迪卡侬，我参与顾客接待、运动需求沟通、产品推荐、销售活动执行与门店运营；在家教平台增长项目中，我持续做内容获客、精准触达与私域裂变。这些经历让我相信，好的转化始于真诚理解，终于长期信任。</p>
+          <p><strong>核心能力：</strong>客户需求洞察｜销售转化｜渠道获客｜私域运营｜数据分析</p>
         </article>
+        <aside class="paper-card fact-grid reveal">
+          <div class="fact"><b>学历</b><span>物理学硕士</span></div><div class="fact"><b>毕业时间</b><span>2027 届</span></div>
+          <div class="fact"><b>现居</b><span>上海</span></div><div class="fact"><b>政治面貌</b><span>共青团员</span></div>
+          <div class="fact"><b>出生年月</b><span>2001.10</span></div><div class="fact"><b>语言</b><span>CET-4</span></div>
+        </aside>
       </div>
-    </section>
+    </div></section>
+
+    <section id="education"><div class="container">
+      <div class="section-heading reveal"><div><span class="eyebrow">Education</span><h2>教育背景</h2></div><p>严谨的数理训练，是我快速学习业务、分析问题的底层能力。</p></div>
+      <div class="route">
+        <article class="paper-card route-item reveal"><div class="route-dot"></div><div><div class="route-meta"><span>2024.09 - 至今</span><span>GPA 3.7 / 4.0</span></div><h3>上海大学 · 理学院</h3><h4>物理学（硕士）</h4><p><strong>奖学金：</strong>2024-2025 上海大学学业奖学金、2024-2025 上海天文台学业奖学金。主修高等量子力学（92）、共形场论（95）、数值方法与人工智能（91）、高等光学（88）。</p></div></article>
+        <article class="paper-card route-item reveal"><div class="route-dot"></div><div><div class="route-meta"><span>2020.09 - 2024.06</span><span>GPA 2.88 / 4.0</span></div><h3>海南大学 · 物理与光电工程学院</h3><h4>应用物理学（本科）</h4><p>系统学习高等数学、线性代数、概率论与统计物理、力学、热学、电磁学、数学物理方法、量子力学与电动力学等课程。</p></div></article>
+      </div>
+    </div></section>
+
+    <section id="experience"><div class="container">
+      <div class="section-heading reveal"><div><span class="eyebrow">Work Experience</span><h2>工作经历</h2></div><p>从一线顾客接待，到增长链路设计；所有能力都回到“连接人、促成结果”。</p></div>
+      <div class="project-grid">
+        <article class="paper-card project featured reveal"><span class="project-number">EXPERIENCE 01 · 2024.04 - 2024.07</span><h3>迪卡侬（上海）体育用品有限公司海口大英山分公司</h3><div class="project-role">销售助理</div><ul><li><strong>顾客接待与销售转化：</strong>面向门店及全渠道顾客提供专业接待，主动了解运动场景与实际需求，匹配并推荐合适产品；完成收银、退换货等日常运营工作。</li><li><strong>销售活动与顾客运营：</strong>参与产品试用、礼品卡推广、运动社群等销售促进项目与活动执行，通过互动体验提升顾客参与度与转化意愿；维护线上商城、门店及社交平台的顾客关系。</li><li><strong>商品陈列与运营保障：</strong>负责商品陈列、补货与整理，保障货架整洁、库存充足并符合品牌展示标准；严格遵守运营与数据安全规范。</li></ul><div class="tags"><span class="tag">顾客接待</span><span class="tag">需求沟通</span><span class="tag">产品推荐</span><span class="tag">销售活动</span><span class="tag">门店运营</span></div></article>
+      </div>
+    </div></section>
+
+    <section id="projects"><div class="container">
+      <div class="section-heading reveal"><div><span class="eyebrow">Selected Work</span><h2>项目经历</h2></div><p>增长、产品和数据交织成一条完整路径：理解用户、设计触达、持续迭代。</p></div>
+      <div class="project-grid">
+        <article class="paper-card project featured reveal"><span class="project-number">PROJECT 01 · 2025.05 - 至今</span><h3>家教平台教师端用户增长体系搭建与优化</h3><div class="project-role">用户增长负责人</div><ul><li><strong>多渠道内容矩阵与获客优化：</strong>负责小红书、抖音、闲鱼等核心社媒平台内容分发与引流，建立图文及视频类高转化内容，提升曝光并降低获客成本。</li><li><strong>精准人群渗透与竞品截流：</strong>搭建“大学生兼职”“找家教”等行业关键词库，对同业高热度帖子评论区及求职大学生、家长用户发帖进行精细化截流，提高私信有效回复率。</li><li><strong>私域增长与裂变机制：</strong>设计并落地“老带新”阶梯式奖励推荐机制，以物质奖励和平台曝光资源双重驱动，激发存量教师的社交网络价值。</li></ul><div class="tags"><span class="tag">内容获客</span><span class="tag">小红书 / 抖音 / 闲鱼</span><span class="tag">关键词运营</span><span class="tag">私域裂变</span><span class="tag">增长策略</span></div></article>
+        <article class="paper-card project reveal"><span class="project-number">PROJECT 02 · 2026.06 - 至今</span><h3>Do or Not 极简决策辅助 App</h3><div class="project-role">产品负责人 / 独立开发者</div><a class="project-link" href="https://do.smallorbit.cn" target="_blank" rel="noreferrer">do.smallorbit.cn ↗</a><ul><li>围绕“选择困难”场景完成产品定义、交互设计、测试迭代与官网部署。</li><li>独立推进开发、测试、发布，形成从需求到上线的完整闭环。</li></ul><div class="tags"><span class="tag">用户洞察</span><span class="tag">产品迭代</span><span class="tag">独立部署</span></div></article>
+        <article class="paper-card project reveal"><span class="project-number">PROJECT 03 · 2023.06 - 2024.06</span><h3>基于 TESS 恒星光变曲线的磁活动特征分析</h3><div class="project-role">数据分析助理</div><ul><li>针对约 108 万条光变曲线，使用 SQL、NumPy、Pandas 完成筛选、清洗、质量过滤与特征提取。</li><li>构建周期搜索、MCMC 拟合与可视化验证流程，为研究提供定量支持。</li></ul><div class="tags"><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">数据清洗</span><span class="tag">统计分析</span></div></article>
+        <article class="paper-card project featured reveal"><span class="project-number">PROJECT 04 · 2026.07 - 至今</span><h3>AI 连载小说多智能体创作系统</h3><div class="project-role">独立开发者</div><a class="project-link" href="https://github.com/tpos8/Ai-Novel-Workflow" target="_blank" rel="noreferrer">github.com/tpos8/Ai-Novel-Workflow ↗</a><ul><li>基于 Python、LangGraph 与 LangChain 构建覆盖大纲、设定、章节规划、正文生成、一致性审查和记忆维护的 7-Agent 连载创作流程。</li><li>封装双模型网关，并通过 JSON Schema、Pydantic 校验与失败重试提升结构化输出稳定性；已沉淀 17 章、约 10.8 万字内容。</li></ul><div class="tags"><span class="tag">AI Agent</span><span class="tag">LangGraph</span><span class="tag">工作流设计</span><span class="tag">Python</span></div></article>
+      </div>
+    </div></section>
+
+    <section id="skills"><div class="container">
+      <div class="section-heading reveal"><div><span class="eyebrow">Capabilities</span><h2>专业技能</h2></div><p>让我在销售、增长与业务分析之间顺畅切换的一组实用能力。</p></div>
+      <div class="skills-grid">
+        <article class="paper-card skill reveal"><div class="skill-mark">✦</div><h3>销售与客户运营</h3><p>具备线下零售顾客接待、需求挖掘、产品推荐、销售活动执行、退换货处理和顾客关系维护经验，重视服务体验与长期关系。</p></article>
+        <article class="paper-card skill reveal"><div class="skill-mark">↗</div><h3>用户增长与渠道运营</h3><p>具备小红书、抖音、闲鱼等平台内容获客、关键词截流、私域承接及老带新裂变实践，能围绕目标人群设计触达与转化路径。</p></article>
+        <article class="paper-card skill reveal"><div class="skill-mark">⌁</div><h3>数据分析与办公工具</h3><p>熟练使用 Excel（VLOOKUP、XLOOKUP、数据透视表）、Power BI；熟悉 SQL、Python、Power Query，可进行业务数据清洗、分析与可视化。</p></article>
+        <article class="paper-card skill reveal"><div class="skill-mark">◌</div><h3>AI 与产品实践</h3><p>能够从用户场景出发拆解需求、设计流程、验证体验并持续迭代；具备从 0 到 1 推进轻量产品落地的实践。</p></article>
+        <article class="paper-card skill reveal"><div class="skill-mark">⌘</div><h3>智能体与开发工具</h3><p>熟悉 Codex、OpenClaw、Flutter、Android Studio 与 Git / GitHub 的协作流程，能够通过 AI 协同提升开发与问题定位效率。</p></article>
+        <article class="paper-card skill reveal"><div class="skill-mark">⟡</div><h3>证书与语言</h3><p>大学英语四级（CET-4）；普通话二级乙等。</p></article>
+      </div>
+    </div></section>
+
+    <section id="strengths"><div class="container">
+      <div class="section-heading reveal"><div><span class="eyebrow">Strengths</span><h2>个人优势</h2></div><p>在快节奏、结果导向的环境里，稳定地把事做成。</p></div>
+      <div class="strength-grid">
+        <article class="paper-card strength reveal"><div class="strength-index">01</div><h3>结果导向的执行力</h3><p>习惯先明确目标、拆解任务并持续跟进结果，能够适应销售岗位的快节奏与结果导向。</p></article>
+        <article class="paper-card strength reveal"><div class="strength-index">02</div><h3>主动沟通与倾听</h3><p>重视需求理解，能在顾客接待、用户跟进和团队协作中保持耐心、清晰且有反馈的沟通。</p></article>
+        <article class="paper-card strength reveal"><div class="strength-index">03</div><h3>快速学习与适应</h3><p>面对新产品、新业务和新工具会主动查资料并快速上手，能把产品卖点转化为面向客户的表达。</p></article>
+      </div>
+    </div></section>
+
+    <section id="contact"><div class="container">
+      <article class="paper-card contact-card reveal"><div><span class="eyebrow">Contact</span><h2>很高兴，与你在同一片星系相遇。</h2><p>期待销售、客户运营、用户增长或业务分析方向的交流机会。欢迎通过电话或邮件联系我。</p></div><div class="contact-list"><div class="contact-item">电话：<a href="tel:17842275174">178 4227 5174</a></div><div class="contact-item">邮箱：<a href="mailto:1349802098@qq.com">1349802098@qq.com</a></div><div class="contact-item">所在地：中国 · 上海</div><div class="contact-item">求职状态：2027 届硕士毕业生</div></div></article>
+    </div></section>
   </main>
-
-  <footer>
-    <div class="container">© <span id="year"></span> 林扬洋 · Personal Resume</div>
-  </footer>
-
+  <footer>© <span id="year"></span> 林扬洋 · Drawn somewhere in the Milky Way.</footer>
   <script>
-    const root = document.documentElement;
-    const themeToggle = document.getElementById('themeToggle');
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
+    const opening = document.getElementById('opening');
+    const enterSite = () => { opening.classList.add('is-dismissed'); sessionStorage.setItem('small-orbit-visited', 'true'); };
+    document.getElementById('earthButton').addEventListener('click', enterSite);
+    document.getElementById('startButton').addEventListener('click', enterSite);
+    document.getElementById('menuButton').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+    document.querySelectorAll('.nav-links a').forEach((link) => link.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
 
-    const savedTheme = localStorage.getItem('resume-theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    root.dataset.theme = savedTheme || (prefersDark ? 'dark' : 'light');
-
-    themeToggle.addEventListener('click', () => {
-      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-      root.dataset.theme = next;
-      localStorage.setItem('resume-theme', next);
-    });
-
-    menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('open')));
-
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-    const sections = [...document.querySelectorAll('main section[id]')];
-    const navAnchors = [...document.querySelectorAll('.nav-links a')];
-    const activeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
-        }
-      });
-    }, { rootMargin: '-35% 0px -55% 0px' });
-    sections.forEach(section => activeObserver.observe(section));
-
+    const revealObserver = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } }), { threshold: .1 });
+    document.querySelectorAll('.reveal').forEach((item) => revealObserver.observe(item));
+    const navLinks = [...document.querySelectorAll('.nav-links a')];
+    const navObserver = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) navLinks.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id)); }), { rootMargin: '-35% 0px -57% 0px' });
+    document.querySelectorAll('main section[id]').forEach((section) => navObserver.observe(section));
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
