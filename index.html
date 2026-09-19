@@ -6,6 +6,8 @@
   <meta name="description" content="林扬洋的个人网页简历：2027 届物理学硕士，具备销售转化、用户增长与数据分析的复合经历。" />
   <meta name="theme-color" content="#080a22" />
   <title>林扬洋｜Sales · Growth · Data</title>
+  <link rel="preload" as="image" href="assets/earth-cartoon-oil-no-face.png" fetchpriority="high" />
+  <script>try{if(sessionStorage.getItem("small-orbit-visited")==="true")document.documentElement.classList.add("returning-visitor")}catch(e){}</script>
   <style>
     :root {
       --ink: #f6f0e8;
@@ -42,6 +44,7 @@
     img { display: block; max-width: 100%; }
 
     /* Opening scene */
+    .returning-visitor .opening { display: none; }
     .opening {
       position: fixed;
       inset: 0;
@@ -94,7 +97,7 @@
       letter-spacing: .3em;
       text-transform: uppercase;
       opacity: 0;
-      animation: fade-up .7s 1.6s ease forwards;
+      animation: fade-up .55s .65s ease forwards;
     }
     .earth-button {
       position: relative;
@@ -104,7 +107,7 @@
       border-radius: 50%;
       cursor: pointer;
       background: none;
-      animation: earth-arrive 2.1s .12s cubic-bezier(.14,.85,.19,1) both;
+      animation: earth-arrive 1.15s .04s cubic-bezier(.14,.85,.19,1) both;
       transition: transform .36s ease, filter .32s ease;
     }
     .earth-button::before {
@@ -141,7 +144,7 @@
       letter-spacing: .12em;
       text-transform: uppercase;
       opacity: 0;
-      animation: fade-up .7s 1.75s ease forwards;
+      animation: fade-up .55s .78s ease forwards;
       transition: background .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease;
     }
     .start-button:hover, .start-button:focus-visible {
@@ -151,7 +154,7 @@
       box-shadow: 5px 6px 0 rgba(181, 155, 255, .52);
       transform: translate(-2px, -2px) rotate(-1deg);
     }
-    .opening-note { margin: 17px 0 0; color: rgba(255,255,255,.62); font-size: 12px; opacity: 0; animation: fade-up .7s 2s ease forwards; }
+    .opening-note { margin: 17px 0 0; color: rgba(255,255,255,.62); font-size: 12px; opacity: 0; animation: fade-up .55s .92s ease forwards; }
 
     .grain {
       position: fixed;
@@ -338,7 +341,7 @@
     <div class="opening-content">
       <p class="opening-kicker">small orbit · personal universe</p>
       <button class="earth-button" id="earthButton" type="button" aria-label="进入林扬洋的个人主页">
-        <img class="earth" src="assets/earth-cartoon-oil-no-face.png" alt="卡通油画手绘地球" />
+        <img class="earth" src="assets/earth-cartoon-oil-no-face.png" alt="卡通油画手绘地球" fetchpriority="high" decoding="async" />
       </button>
       <button class="start-button" id="startButton" type="button">start</button>
       <p class="opening-note">hover the Earth · click to explore</p>
@@ -367,7 +370,7 @@
           <div class="contact-strip"><span><a href="tel:17842275174">178 4227 5174</a></span><span><a href="mailto:1349802098@qq.com">1349802098@qq.com</a></span><span><a href="https://github.com/tpos8" target="_blank" rel="noreferrer">GitHub @tpos8 ↗</a></span><span>上海 · 硕士在读</span></div>
         </div>
         <div class="hero-orbit reveal">
-          <div class="portrait"><img src="assets/avatar.png" alt="林扬洋照片" /></div>
+          <div class="portrait"><img src="assets/avatar.png" alt="林扬洋照片" decoding="async" /></div>
           <span class="orbit-label">AVAILABLE · 2027</span>
         </div>
       </div>
@@ -439,11 +442,11 @@
       <div class="section-heading reveal"><div><span class="eyebrow">Life on Earth</span><h2>生活切片</h2></div><p>走出屏幕、走进山野；在自己的小小轨道上，收集辽阔与晴朗。</p></div>
       <p class="life-intro reveal">这一组来自高原与山野的瞬间。点击任意照片，可以放大查看。</p>
       <div class="life-gallery">
-        <button class="life-photo reveal" type="button" data-photo="assets/life-01.jpg" aria-label="查看草原牛仔帽照片"><img src="assets/life-01.jpg" alt="草原上的林扬洋，戴着牛仔帽" /><span class="photo-note">wide open sky</span></button>
-        <button class="life-photo reveal" type="button" data-photo="assets/life-02.jpg" aria-label="查看山湖徒步照片"><img src="assets/life-02.jpg" alt="云雾山湖边徒步的林扬洋" /><span class="photo-note">into the wild</span></button>
-        <button class="life-photo reveal" type="button" data-photo="assets/life-03.jpg" aria-label="查看骑马照片"><img src="assets/life-03.jpg" alt="草原上骑马的林扬洋" /><span class="photo-note">ride with wind</span></button>
-        <button class="life-photo reveal" type="button" data-photo="assets/life-04.jpg" aria-label="查看草原合影"><img src="assets/life-04.jpg" alt="草原花海中的林扬洋" /><span class="photo-note">a good day</span></button>
-        <button class="life-photo reveal" type="button" data-photo="assets/life-05.jpg" aria-label="查看山路照片"><img src="assets/life-05.jpg" alt="山路边的林扬洋" /><span class="photo-note">keep going</span></button>
+        <button class="life-photo reveal" type="button" data-photo="assets/life-01.jpg" aria-label="查看草原牛仔帽照片"><img src="assets/life-01.jpg" alt="草原上的林扬洋，戴着牛仔帽" loading="lazy" decoding="async" /><span class="photo-note">wide open sky</span></button>
+        <button class="life-photo reveal" type="button" data-photo="assets/life-02.jpg" aria-label="查看山湖徒步照片"><img src="assets/life-02.jpg" alt="云雾山湖边徒步的林扬洋" loading="lazy" decoding="async" /><span class="photo-note">into the wild</span></button>
+        <button class="life-photo reveal" type="button" data-photo="assets/life-03.jpg" aria-label="查看骑马照片"><img src="assets/life-03.jpg" alt="草原上骑马的林扬洋" loading="lazy" decoding="async" /><span class="photo-note">ride with wind</span></button>
+        <button class="life-photo reveal" type="button" data-photo="assets/life-04.jpg" aria-label="查看草原合影"><img src="assets/life-04.jpg" alt="草原花海中的林扬洋" loading="lazy" decoding="async" /><span class="photo-note">a good day</span></button>
+        <button class="life-photo reveal" type="button" data-photo="assets/life-05.jpg" aria-label="查看山路照片"><img src="assets/life-05.jpg" alt="山路边的林扬洋" loading="lazy" decoding="async" /><span class="photo-note">keep going</span></button>
       </div>
     </div></section>
 
@@ -455,7 +458,7 @@
   <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="生活照片预览"><figure><button id="lightboxClose" type="button" aria-label="关闭照片预览">×</button><img id="lightboxImage" src="" alt="" /></figure></div>
   <script>
     const opening = document.getElementById('opening');
-    const enterSite = () => { opening.classList.add('is-dismissed'); sessionStorage.setItem('small-orbit-visited', 'true'); };
+    const enterSite = () => { opening.classList.add('is-dismissed'); document.documentElement.classList.add('returning-visitor'); try { sessionStorage.setItem('small-orbit-visited', 'true'); } catch (e) {} };
     document.getElementById('earthButton').addEventListener('click', enterSite);
     document.getElementById('startButton').addEventListener('click', enterSite);
     document.getElementById('menuButton').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
