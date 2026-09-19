@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="林扬洋的个人网页简历：2027 届上海大学物理学硕士，聚焦产品经理 / AI 产品经理，具备 AI 产品、Agent 工作流、数据分析与垂直场景落地实践。" />
+  <meta name="theme-color" content="#080a22" />
+  <title>林扬洋｜AI Product · Agent · Data</title>
+  <link rel="preload" as="image" href="assets/opening-galaxy.webp" type="image/webp" media="(min-width: 581px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/opening-galaxy-mobile.webp" type="image/webp" media="(max-width: 580px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/opening-earth.webp" type="image/webp" fetchpriority="high" />
+  <noscript><style>.opening { display: none !important; }</style></noscript>
+  <style>
+    :root {
+      --ink: #f6f0e8;
+      --paper: #11102b;
+      --paper-2: #19143d;
+      --paper-3: #231951;
+      --night: #07081b;
+      --violet: #a992ff;
+      --lilac: #d3c5ff;
+      --blue: #74b8ff;
+      --gold: #f6cf8c;
+      --mist: #c9c5df;
+      --line: rgba(217, 205, 255, .28);
+      --shadow: 0 28px 55px rgba(0, 0, 0, .28);
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 85% 2%, rgba(135, 99, 255, .18), transparent 24rem),
+        radial-gradient(circle at 8% 20%, rgba(58, 127, 255, .11), transparent 31rem),
+        var(--night);
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .nav-cta { cursor: pointer; background: transparent; }
+    button.button { cursor: pointer; }
+    .contact-dialog { width: min(400px, calc(100% - 32px)); max-height: calc(100dvh - 32px); padding: 26px; border: 1px solid var(--line); border-radius: 18px; color: var(--ink); background: linear-gradient(135deg, #241b51, #12102f); box-shadow: var(--shadow); }
+    .contact-dialog::backdrop { background: rgba(3, 3, 16, .76); backdrop-filter: blur(8px); }
+    .contact-dialog h2 { margin: 0 42px 22px 0; font-size: 28px; letter-spacing: 0; }
+    .contact-close { position: absolute; top: 18px; right: 18px; display: grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 1px solid var(--line); border-radius: 50%; color: var(--ink); background: rgba(255,255,255,.06); font-size: 23px; cursor: pointer; }
+    .contact-details { display: grid; gap: 10px; margin: 0; }
+    .contact-detail { padding: 12px 14px; border: 1px solid rgba(255,255,255,.14); border-radius: 10px; background: rgba(255,255,255,.035); }
+    .contact-detail dt { margin-bottom: 2px; color: var(--lilac); font-size: 12px; }
+    .contact-detail dd { margin: 0; font-size: 16px; overflow-wrap: anywhere; }
+    .contact-detail a:hover { color: var(--gold); }
+    .contact-dialog :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+    /* Opening scene */
+    .opening {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      color: #fffdf8;
+      background: #050617;
+      transition: opacity .8s ease, visibility .8s ease;
+    }
+    .opening.is-dismissed { opacity: 0; visibility: hidden; pointer-events: none; }
+    .opening::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 5%, rgba(4, 4, 16, .22) 68%, rgba(2, 2, 10, .68));
+      pointer-events: none;
+    }
+    .opening-galaxy {
+      position: absolute;
+      inset: -4%;
+      z-index: -2;
+      background: url("assets/opening-galaxy.webp") center / cover no-repeat;
+      animation: space-bloom 1.2s cubic-bezier(.18,.82,.24,1) both;
+    }
+    .opening-galaxy::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .46;
+      background-image: radial-gradient(rgba(255,255,255,.9) .7px, transparent .8px);
+      background-size: 53px 53px;
+      mix-blend-mode: screen;
+      animation: star-drift 12s linear infinite;
+    }
+    .opening-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      justify-items: center;
+      padding: 24px;
+      text-align: center;
+    }
+    .opening-kicker {
+      margin: 0 0 18px;
+      color: rgba(255, 248, 231, .78);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fade-up .35s .1s ease forwards;
+    }
+    .earth-button {
+      position: relative;
+      width: clamp(190px, 27vw, 330px);
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      cursor: pointer;
+      background: none;
+      animation: earth-arrive .75s .05s cubic-bezier(.14,.85,.19,1) both;
+      transition: transform .36s ease, filter .32s ease;
+    }
+    .earth-button::before {
+      content: "";
+      position: absolute;
+      inset: 5.5%;
+      border: 1.8px solid transparent;
+      border-radius: 49% 51% 50% 48%;
+      transform: rotate(-7deg);
+      transition: border-color .25s ease, box-shadow .25s ease;
+      pointer-events: none;
+    }
+    .earth-button:hover,
+    .earth-button:focus-visible { transform: scale(1.055) rotate(-2deg); outline: none; }
+    .earth-button:hover::before,
+    .earth-button:focus-visible::before {
+      border-color: rgba(255,255,255,.96);
+      box-shadow: 0 0 17px rgba(255,255,255,.82), inset 0 0 14px rgba(255,255,255,.25);
+    }
+    .earth-button:hover .earth { filter: drop-shadow(0 0 8px rgba(255,255,255,.92)) drop-shadow(0 0 24px rgba(166, 179, 255, .66)); }
+    .earth { width: 100%; height: auto; filter: drop-shadow(0 18px 26px rgba(0,0,0,.46)); transition: filter .25s ease; }
+    .start-button {
+      position: relative;
+      margin-top: clamp(21px, 3vw, 33px);
+      padding: 10px 29px 11px;
+      border: 1.5px solid rgba(255,255,255,.9);
+      border-radius: 4px 8px 5px 7px;
+      color: #fffdf8;
+      cursor: pointer;
+      background: rgba(12, 10, 38, .3);
+      box-shadow: 3px 4px 0 rgba(255,255,255,.15);
+      font-family: "Bradley Hand", "Comic Sans MS", cursive;
+      font-size: 21px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fade-up .35s .15s ease forwards;
+      transition: background .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+    .start-button:hover, .start-button:focus-visible {
+      color: #11102b;
+      outline: none;
+      background: #fffdf8;
+      box-shadow: 5px 6px 0 rgba(181, 155, 255, .52);
+      transform: translate(-2px, -2px) rotate(-1deg);
+    }
+    .opening-note { margin: 17px 0 0; color: rgba(255,255,255,.62); font-size: 12px; opacity: 0; animation: fade-up .35s .2s ease forwards; }
+
+    .grain {
+      position: fixed;
+      z-index: 90;
+      inset: 0;
+      pointer-events: none;
+      opacity: .17;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+    }
+    .container { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(215, 200, 255, .15);
+      background: rgba(8, 7, 29, .72);
+      backdrop-filter: blur(18px);
+    }
+    .nav { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 800; letter-spacing: .07em; }
+    .brand-star { color: var(--gold); font-size: 23px; line-height: 1; transform: rotate(-13deg); }
+    .nav-links { display: flex; align-items: center; gap: 3px; }
+    .nav-links a { padding: 8px 11px; border-radius: 7px 10px 7px 9px; color: rgba(245,240,255,.68); font-size: 13px; transition: color .2s, background .2s; }
+    .nav-links a:hover, .nav-links a.active { color: #fff; background: rgba(177, 152, 255, .18); }
+    .nav-cta { padding: 7px 13px; border: 1px solid rgba(246, 207, 140, .7); border-radius: 7px 5px 8px 6px; color: var(--gold); font-size: 12px; font-weight: 700; transition: background .2s, color .2s; }
+    .nav-cta:hover { background: var(--gold); color: #16102c; }
+    .menu { display: none; width: 39px; height: 39px; border: 1px solid var(--line); border-radius: 8px; color: #fff; background: transparent; }
+
+    .hero { position: relative; padding: clamp(36px, 5vw, 64px) 0 20px; overflow: hidden; }
+    .hero::before { content: ""; position: absolute; width: 580px; height: 580px; top: -180px; right: -180px; border: 1px solid rgba(200, 184, 255, .17); border-radius: 50%; box-shadow: 0 0 0 45px rgba(147, 119, 255, .025), 0 0 0 104px rgba(147, 119, 255, .018); }
+    .hero::after { content: "✦  ·  ✧  ·  ✦"; position: absolute; right: 8%; bottom: 37px; color: rgba(247, 218, 158, .56); font-size: 17px; letter-spacing: .5em; transform: rotate(-9deg); }
+    .hero-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1.24fr) minmax(270px, .76fr); align-items: center; gap: clamp(30px, 7vw, 100px); }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--gold); font-size: 11px; font-weight: 800; letter-spacing: .23em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 25px; height: 1px; background: currentColor; transform: rotate(-2deg); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 800px; margin: 16px 0 18px; font-family: Georgia, "Songti SC", serif; font-size: clamp(50px, 8vw, 103px); font-weight: 500; letter-spacing: -.07em; line-height: .95; }
+    h1 span { display: block; color: var(--lilac); font-size: .43em; letter-spacing: .08em; line-height: 1.45; }
+    .hero-summary { max-width: 670px; margin: 0; color: var(--mist); font-size: clamp(16px, 2vw, 19px); }
+    .hero-summary strong { color: #fff; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 32px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 47px; padding: 11px 18px; border: 1px solid transparent; border-radius: 7px 11px 7px 10px; font-weight: 800; font-size: 14px; transition: transform .2s, box-shadow .2s, background .2s; }
+    .button:hover { transform: translateY(-3px) rotate(-.7deg); }
+    .button-primary { color: #16102c; background: var(--gold); box-shadow: 4px 5px 0 rgba(246,207,140,.16); }
+    .button-secondary { border-color: var(--line); color: #f3efff; background: rgba(255,255,255,.05); }
+    .button-secondary:hover { background: rgba(255,255,255,.11); }
+    .contact-strip { display: flex; flex-wrap: wrap; gap: 8px 17px; margin-top: 28px; color: rgba(236,231,255,.68); font-size: 13px; }
+    .contact-strip a:hover { color: var(--gold); }
+    .contact-strip span:not(:last-child)::after { content: "·"; margin-left: 17px; color: var(--violet); }
+    .hero-orbit { position: relative; justify-self: center; width: min(100%, 325px); aspect-ratio: 1; }
+    .hero-orbit::before, .hero-orbit::after { content: ""; position: absolute; inset: 1%; border: 1px solid rgba(197, 182, 255, .31); border-radius: 50%; transform: rotate(-24deg) scaleY(.43); }
+    .hero-orbit::after { inset: 14%; border-style: dashed; transform: rotate(30deg) scaleY(.82); opacity: .45; }
+    .portrait { position: absolute; inset: 12%; overflow: hidden; border: 1px solid rgba(255,255,255,.55); border-radius: 51% 49% 48% 52%; background: #312453; box-shadow: 0 0 0 7px rgba(203, 185, 255, .06), 0 24px 40px rgba(0,0,0,.28); transform: rotate(4deg); }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: contrast(1.03) saturate(.85) sepia(.11); }
+    .orbit-label { position: absolute; left: -21px; bottom: 1px; padding: 7px 12px; border: 1px solid rgba(246, 207, 140, .55); border-radius: 7px 4px 7px 5px; color: var(--gold); background: rgba(13, 10, 38, .9); font-size: 11px; font-weight: 700; letter-spacing: .09em; transform: rotate(-8deg); }
+
+    main { padding-bottom: 32px; }
+    section { position: relative; padding: 36px 0 0; scroll-margin-top: 70px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 18px; }
+    h2 { margin: 4px 0 0; font-family: Georgia, "Songti SC", serif; font-size: clamp(34px, 4vw, 52px); font-weight: 500; letter-spacing: -.055em; line-height: 1.18; }
+    .section-heading > p { max-width: 430px; margin: 0; color: var(--mist); font-size: 14px; text-align: right; }
+    .paper-card { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(135deg, rgba(36,27,81,.92), rgba(18,16,47,.92)); box-shadow: var(--shadow); }
+    .paper-card::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .22; background-image: radial-gradient(rgba(255,255,255,.22) .55px, transparent .75px); background-size: 6px 6px; mix-blend-mode: soft-light; }
+
+    .about-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .about-copy { padding: 24px; }
+    .about-copy p { margin: 0 0 14px; color: var(--mist); }
+    .about-copy p:last-child { margin-bottom: 0; }
+    .about-copy strong { color: var(--gold); }
+    .fact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 14px; }
+    .fact { padding: 14px; border: 1px solid rgba(212,199,255,.13); border-radius: 9px 13px 10px 14px; background: rgba(255,255,255,.035); }
+    .fact b { display: block; color: var(--lilac); font-size: 11px; font-weight: 700; letter-spacing: .09em; }
+    .fact span { display: block; margin-top: 4px; font-size: 14px; font-weight: 700; }
+
+    .route { position: relative; display: grid; grid-auto-rows: 1fr; gap: 14px; }
+    .route::before { content: ""; position: absolute; left: 29px; top: 32px; bottom: 33px; border-left: 1px dashed rgba(201, 181, 255, .52); }
+    .route-item { display: grid; grid-template-columns: 58px 1fr; gap: 18px; padding: 25px 27px 26px 14px; }
+    .route-dot { position: relative; z-index: 1; width: 15px; height: 15px; margin: 7px auto 0; border: 3px solid var(--paper-2); border-radius: 48% 52% 51% 49%; background: var(--gold); box-shadow: 0 0 0 4px rgba(246,207,140,.13); }
+    .route-meta { display: flex; justify-content: space-between; gap: 15px; margin-bottom: 5px; color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+    .route-item h3 { margin: 0; font-size: 20px; }
+    .route-item h4 { margin: 4px 0 10px; color: var(--lilac); font-size: 14px; font-weight: 650; }
+    .route-item p { margin: 0; color: var(--mist); font-size: 14px; }
+
+    .project-grid { display: grid; grid-template-columns: minmax(0, 1fr); grid-auto-rows: 1fr; gap: 14px; }
+    .project { display: flex; flex-direction: column; min-width: 0; padding: 24px; transition: transform .25s ease, border-color .25s ease; }
+    .project.featured { background: linear-gradient(120deg, rgba(53,35,107,.97), rgba(20,20,57,.96)); }
+    .project:hover { border-color: rgba(246,207,140,.68); transform: translateY(-2px); }
+    .project-number { color: var(--gold); font-size: 11px; font-weight: 800; letter-spacing: .13em; }
+    .project h3 { margin: 9px 0 4px; font-size: 22px; line-height: 1.35; }
+    .project-role { color: var(--lilac); font-size: 14px; font-weight: 700; }
+    .project ul { margin: 17px 0 0; padding: 0; list-style: none; color: var(--mist); font-size: 14px; }
+    .project li { position: relative; margin-bottom: 10px; padding-left: 17px; }
+    .project li::before { content: "✦"; position: absolute; left: 0; top: 1px; color: var(--gold); font-size: 10px; }
+    .project-link { display: inline-block; margin-top: 10px; color: var(--gold); font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+    .project .tags { margin-top: auto; padding-top: 14px; }
+    .project li:last-child { margin-bottom: 0; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
+    .tag { padding: 4px 9px; border: 1px solid rgba(203,184,255,.26); border-radius: 999px 930px 990px 940px; color: #e9e3ff; background: rgba(255,255,255,.045); font-size: 11px; font-weight: 650; }
+
+    .skills-grid, .strength-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 14px; }
+    .skill, .strength { padding: 24px; }
+    .skill-mark, .strength-index { width: 38px; height: 38px; display: grid; place-items: center; margin-bottom: 14px; border: 1px solid rgba(246,207,140,.55); border-radius: 54% 46% 52% 48%; color: var(--gold); font-family: Georgia, serif; font-size: 19px; }
+    .skill h3, .strength h3 { margin: 0 0 7px; font-size: 17px; }
+    .skill p, .strength p { margin: 0; color: var(--mist); font-size: 13px; }
+    .certificate { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 17px; padding: 19px 24px; }
+    .certificate b { color: var(--gold); }
+    .certificate div { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 7px; }
+
+    .life-intro { max-width: 520px; margin: 0 0 16px; color: var(--mist); }
+    .life-gallery { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+    .life-photo { position: relative; overflow: hidden; min-width: 0; min-height: 0; aspect-ratio: 3 / 4; padding: 0; border: 1px solid rgba(222, 210, 255, .36); border-radius: 16px; cursor: zoom-in; background: var(--paper-2); box-shadow: var(--shadow); transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease; }
+    .life-photo::after { content: ""; position: absolute; inset: 0; opacity: 0; background: linear-gradient(180deg, transparent 45%, rgba(7, 7, 27, .7)); transition: opacity .28s ease; }
+    .life-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.8,.2,1), filter .4s ease; }
+    .life-photo:hover { z-index: 2; border-color: var(--gold); box-shadow: 0 25px 50px rgba(0,0,0,.42); transform: translateY(-3px); }
+    .life-photo:hover img { transform: scale(1.075); filter: saturate(1.08) contrast(1.04); }
+    .life-photo:hover::after { opacity: 1; }
+    .photo-note { position: absolute; z-index: 1; right: 14px; bottom: 10px; color: #fffaf0; font-family: "Bradley Hand", "Comic Sans MS", cursive; font-size: 13px; letter-spacing: .08em; opacity: 0; transform: translateY(8px); transition: opacity .28s ease, transform .28s ease; }
+    .life-photo:hover .photo-note { opacity: 1; transform: translateY(0); }
+    .lightbox { position: fixed; z-index: 110; inset: 0; display: grid; place-items: center; padding: 30px; opacity: 0; visibility: hidden; background: rgba(3, 3, 16, .86); backdrop-filter: blur(11px); transition: opacity .25s ease, visibility .25s ease; }
+    .lightbox.open { opacity: 1; visibility: visible; }
+    .lightbox figure { position: relative; max-width: min(90vw, 900px); max-height: 88vh; margin: 0; transform: scale(.95); transition: transform .28s ease; }
+    .lightbox.open figure { transform: scale(1); }
+    .lightbox img { display: block; max-width: 90vw; max-height: 82vh; border: 1px solid rgba(255,255,255,.58); border-radius: 11px 15px 12px 16px; box-shadow: 0 28px 80px rgba(0,0,0,.6); }
+    .lightbox button { position: absolute; top: -17px; right: -17px; width: 37px; height: 37px; border: 1px solid rgba(255,255,255,.8); border-radius: 50%; color: #16102c; cursor: pointer; background: var(--gold); font-size: 23px; line-height: 1; box-shadow: 2px 3px 0 rgba(255,255,255,.18); }
+    footer { padding: 24px 0 28px; color: rgba(215,205,255,.55); text-align: center; font-size: 12px; }
+
+    .reveal { opacity: 1; }
+    .reveal.visible { animation: fade-up .4s ease both; }
+    @keyframes space-bloom { from { transform: scale(.76); filter: blur(2px) brightness(.6); } to { transform: scale(1); filter: blur(0) brightness(1); } }
+    @keyframes earth-arrive { 0% { opacity: 0; transform: scale(.08); filter: blur(12px); } 35% { opacity: 1; } 76% { transform: scale(1.08); filter: blur(0); } 100% { transform: scale(1); filter: blur(0); } }
+    @keyframes fade-up { to { opacity: 1; transform: translateY(0); } from { transform: translateY(10px); } }
+    @keyframes star-drift { to { transform: translate3d(-53px, 53px, 0); } }
+
+    @media (max-width: 850px) {
+      .life-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .hero-grid, .about-grid { grid-template-columns: 1fr; }
+      .hero-orbit { grid-row: 1; width: min(64vw, 290px); }
+      .section-heading { align-items: start; flex-direction: column; }
+      .section-heading > p { text-align: left; }
+      .skills-grid, .strength-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { position: fixed; top: 70px; left: 20px; right: 20px; display: none; flex-direction: column; align-items: stretch; padding: 10px; border: 1px solid var(--line); border-radius: 14px; background: #11102b; box-shadow: var(--shadow); }
+      .nav-links.open { display: flex; }
+      .menu { display: block; }
+      .nav-cta { display: none; }
+    }
+    @media (max-width: 580px) {
+      .container { width: min(calc(100% - 30px), var(--max)); }
+      .hero { padding-top: 28px; }
+      .opening-galaxy { background-image: url("assets/opening-galaxy-mobile.webp"); }
+      .hero-grid { gap: 20px; }
+      .project, .skill, .about-copy { padding: 20px; }
+        .project-grid, .skills-grid, .strength-grid { grid-template-columns: 1fr; }
+      .project.featured { grid-column: auto; }
+      .fact-grid { grid-template-columns: 1fr 1fr; }
+      .route-item { grid-template-columns: 44px 1fr; padding-right: 19px; }
+      .route::before { left: 22px; }
+      .route-meta { display: grid; }
+      .certificate { align-items: start; flex-direction: column; }
+      .certificate div { justify-content: flex-start; }
+      .brand-text { display: none; }
+      h1 { font-size: clamp(48px, 17vw, 78px); }
+      .life-gallery { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="opening" id="opening" aria-label="网站启动页">
+    <div class="opening-galaxy"></div>
+    <div class="opening-content">
+      <p class="opening-kicker">small orbit · personal universe</p>
+      <button class="earth-button" id="earthButton" type="button" aria-label="进入林扬洋的个人主页">
+        <img class="earth" width="660" height="660" fetchpriority="high" decoding="async" src="assets/opening-earth.webp" alt="卡通油画手绘地球" />
+      </button>
+      <button class="start-button" id="startButton" type="button">start</button>
+      <p class="opening-note">hover the Earth · click to explore</p>
+    </div>
+  </div>
+
+  <div class="grain"></div>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="回到顶部"><span class="brand-star">✦</span><span class="brand-text">林扬洋 · SMALL ORBIT</span></a>
+      <nav class="nav-links" id="navLinks" aria-label="页面导航">
+        <a href="#about">关于我</a><a href="#education">教育</a><a href="#experience">实习</a><a href="#projects">项目</a><a href="#skills">技能</a><a href="#life">生活</a>
+      </nav>
+      <div><button class="nav-cta" type="button" data-contact-open aria-haspopup="dialog" aria-controls="contactDialog">联系我 ↗</button><button class="menu" id="menuButton" type="button" aria-label="打开导航菜单">☰</button></div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <!-- <span class="eyebrow">AI Product · Agent · Data</span> -->
+          <h1>林扬洋<span>把技术能力，转化为真正可用的产品。</span></h1>
+          <p class="hero-summary">2027 届上海大学物理学硕士。具备产品思维、用户体验意识和数据驱动意识，并有 LLM / Agent 垂直场景落地、独立产品开发与科研 Agent 设计实践。</p>
+          <div class="hero-actions"><a class="button button-primary" href="#projects">查看项目 ↓</a><a class="button button-secondary" href="https://selected-works-linyy.cosmiccattakeself.chatgpt.site" target="_blank" rel="noopener noreferrer">作品集 · Figma UI 设计 ↗</a><button class="button button-secondary" type="button" data-contact-open aria-haspopup="dialog" aria-controls="contactDialog">联系我</button></div>
+          <div class="contact-strip"><span><a href="https://github.com/tpos8" target="_blank" rel="noreferrer">GitHub @tpos8 ↗</a></span><span>上海 · 2027 届硕士</span></div>
+        </div>
+        <div class="hero-orbit reveal">
+          <div class="portrait"><img src="assets/avatar-2026.webp" width="450" height="600" decoding="async" alt="林扬洋照片" /></div>
+          <!-- <span class="orbit-label">AI PRODUCT · 2027</span> -->
+        </div>
+      </div>
+    </section>
+
+    <section id="about"><div class="container">
+      <div class="section-heading reveal"><div><span class="eyebrow">Profile</span><h2>关于我</h2></div><p>从用户场景和业务目标出发，把需求、技术和数据连接成可落地的产品方案。</p></div>
+      <div class="about-grid">
+        <article class="paper-card about-copy reveal">
+          <p>1、具备较强的产品思维、用户体验意识和数据驱动意识，能够从用户场景和业务目标出发发现问题、拆解需求，并推动产品从 MVP 验证到持续迭代。</p>
+          <p>2、具备 AI 产品实践及垂直场景落地经验，能够理解 LLM / Agent 的技术能力与业务边界，结合具体业务场景完成需求抽象、产品流程、功能设计与评测方案设计，推动 AI 能力从技术方案向实际产品落地转化。</p>
+          <p>3、具备较强的快速学习、项目推进和结果导向能力，能够独立完成从需求分析、方案设计到产品落地的完整闭环。</p>
+          <p><strong>核心能力：</strong>需求分析｜AI 产品设计｜Agent 工作流｜数据分析｜原型与评测｜项目推进</p>
+        </article>
+        <aside class="paper-card fact-grid reveal">
+          <div class="fact"><b>学历</b><span>物理学硕士</span></div><div class="fact"><b>毕业时间</b><span>2027.06</span></div>
+          <div class="fact"><b>学校</b><span>上海大学</span></div><div class="fact"><b>方向</b><span>产品 / AI 产品</span></div>
+          <div class="fact"><b>语言</b><span>CET-4</span></div><div class="fact"><b>证书</b><span>普通话二乙 · 驾驶证</span></div>
+        </aside>
+      </div>
+    </div></section>
+
+    <section id="education"><div class="container">
+      <div class="section-heading reveal"><div><span class="eyebrow">Education</span><h2>教育背景</h2></div><p>数理与科研训练构成了我理解复杂问题、快速学习和数据验证的底层能力。</p></div>
+      <div class="route">
+        <article class="paper-card route-item reveal"><div class="route-dot"></div><div><div class="route-meta"><span>2024.09 - 2027.06</span><span>GPA 3.7 / 4.0</span></div><h3>上海大学 · 理学院</h3><h4>物理学（硕士）</h4><p><strong>奖学金：</strong>2024-2025 上海大学学业奖学金、2024-2025 上海天文台学业奖学金。<br><strong>相关课程：</strong>数值方法与人工智能（91）、高等量子力学（92）、共形场论（95）、高等光学（88）。</p></div></article>
+        <article class="paper-card route-item reveal"><div class="route-dot"></div><div><div class="route-meta"><span>2020.09 - 2024.06</span><span>GPA 2.88 / 4.0</span></div><h3>海南大学 · 物理与光电工程学院</h3><h4>应用物理学（本科）</h4><p>课程基础：高等数学、线性代数、概率论与统计物理、数学物理方法、量子力学、电动力学。</p></div></article>
+      </div>
+    </div></section>
+
+    <section id="experience"><div class="container">
+      <div class="section-heading reveal"><div><span class="eyebrow">Internship Experience</span><h2>实习经历</h2></div><p>把科研数据处理经验与 AI 产品方法结合，尝试解决真实的科研工作流问题。</p></div>
+      <div class="project-grid">
+        <article class="paper-card project featured reveal"><span class="project-number">2025.07 - 至今</span><h3>上海天文台</h3><div class="project-role">科研实习生</div><ul>
+          <li>1、参与紧致双星与毫秒脉冲星研究，负责 Gaia、TESS、LAMOST 等多源观测数据整理、交叉匹配与分析；使用 Python 完成时序清洗、周期分析、参数拟合及结果验证，结合光变、光谱与 SED 数据进行假设验证与结果复核。
+          </li>
+          <li>2、围绕多波段观测数据分散、目标标识不统一及人工检索成本高的问题，开展 AstroMatch 科研 Agent 设计，规划目标识别、多库检索、交叉匹配与结果汇总工作流，并设置多模型路由、人工复核、评测与护栏机制。。</li>
+        </ul><div class="tags"><span class="tag">Python</span><span class="tag">Cross-match</span><span class="tag">天文大数据</span></div></article>
+      </div>
+    </div></section>
+
+    <section id="projects"><div class="container">
+      <div class="section-heading reveal"><div><span class="eyebrow">Project Experience</span><h2>项目经历</h2></div><p>从独立产品到多智能体工作流，再到科研 Agent，持续验证 AI 能力如何进入具体业务流程。</p></div>
+      <div class="project-grid">
+        <article class="paper-card project featured reveal"><span class="project-number">PROJECT 01 · 2026.06 - 至今</span><h3>Do or Not 极简决策辅助 App</h3><div class="project-role">独立开发者</div><a class="project-link" href="https://do.smallorbit.cn" target="_blank" rel="noreferrer">do.smallorbit.cn ↗</a><ul>
+          <li>1、针对用户“选择困难、决策成本高”的场景，完成目标用户、核心痛点、功能边界及需求优先级梳理，以 Do / Not 双结果机制设计 MVP，形成“进入决策—摇动交互—结果反馈”的核心产品流程。</li>
+          <li>2、使用 Codex 辅助 Flutter 原型开发与页面迭代，结合 Android Studio、Git/GitHub 完成真机测试、APK 构建及版本管理，并适配 Android、小程序和官网端，实现产品从 0 到 1 上线。</li>
+          <li>3、通过小范围内测跟踪决策页进入率、决策完成率、重摇率及功能使用率等指标，结合用户行为定位核心流程中的体验问题，持续优化启动流程、摇动反馈及决策交互。</li>
+          <li><strong>迭代结果：</strong>决策页进入率由 68.4% 提升至 76.8%，核心决策完成率由 55.7% 提升至 63.5%，摇动识别成功率提升至 96.2%，核心流程平均耗时由 31 秒降至 23 秒。</li>
+        </ul><div class="tags"><span class="tag">MVP</span><span class="tag">Flutter</span><span class="tag">Codex</span><span class="tag">数据验证</span><span class="tag">产品迭代</span></div></article>
+
+        <article class="paper-card project featured reveal"><span class="project-number">PROJECT 02 · 2026.07 - 至今</span><h3>AI 连载小说多智能体创作系统</h3><div class="project-role">独立开发者</div><a class="project-link" href="https://github.com/tpos8/Ai-Novel-Workflow" target="_blank" rel="noreferrer">github.com/tpos8/Ai-Novel-Workflow ↗</a><ul>
+          <a class="project-link" href="https://fanqienovel.com/page/7663862180495772696" target="_blank" rel="noreferrer">作品番茄小说链接：https://fanqienovel.com/page/7663862180495772696 ↗</a><ul></ul>
+          <li>1、针对长篇创作中设定冲突、上下文过长等问题，基于 Python、LangGraph、LangChain 搭建 7-Agent 工作流，实现大纲、正文、一致性审查与记忆维护协同。</li>
+          <li>2、按 Agent 职责注入设定、时间线与人物关系，接入 DeepSeek/Ollama，并通过 JSON Schema、Pydantic 校验及失败重试提升结构化输出稳定性。</li>
+          <li>3、采用 SQLite + JSON/Markdown 双层存储，支持人工回写与日志审计；已生成 17 章、约 10.8 万字内容，并完成 10 项自动化测试。</li>
+        </ul><div class="tags"><span class="tag">LangGraph</span><span class="tag">LangChain</span><span class="tag">Multi-Agent</span><span class="tag">Pydantic</span><span class="tag">SQLite</span></div></article>
+
+        <article class="paper-card project reveal"><span class="project-number">PROJECT 03 · 2026.01 - 2026.08</span><h3>AstroMatch 多波段天文观测智能匹配 Agent</h3><div class="project-role">独立开发者</div><ul>
+          <li>1、围绕 Gaia、TESS/Kepler、高能及射电数据分散、目标标识不统一和人工 Cross-match 成本高的问题，定义目标用户、核心场景与 MVP，设计“目标识别—多库检索—跨库匹配—结果汇总”核心流程。</li>
+          <li>2、基于 LangGraph 设计 Agent 工作流与多模型路由，规划接入 Gaia、MAST、HEASARC、NRAO 等数据源；结合 Astropy/Astroquery 完成坐标、自行、历元及角距离匹配，并通过匹配评分与人工复核处理模糊候选。</li>
+          <li>3、使用 Codex 设计科研任务线程、数据表、跨库复核及多波段时间轴等交互原型，并围绕检索效果、匹配质量、任务效率与模型风险建立评测和护栏体系，完成从需求定义、技术方案到产品原型验证的闭环。</li>
+        </ul><div class="tags"><span class="tag">AI Agent</span><span class="tag">LangGraph</span><span class="tag">Astroquery</span><span class="tag">多模型路由</span><span class="tag">评测体系</span></div></article>
+      </div>
+    </div></section>
+
+    <section id="skills"><div class="container">
+      <div class="section-heading reveal"><div><span class="eyebrow">Technical Capabilities</span><h2>技术能力</h2></div><p>覆盖 AI 产品、原型设计、数据分析与轻量开发，能够和研发协同完成从方案到验证的闭环。</p></div>
+      <div class="skills-grid">
+        <article class="paper-card skill reveal"><div class="skill-mark">✦</div><h3>LLM / Agent</h3><p>熟悉 LLM、Agent、Codex、LangGraph、LangChain、Ollama，了解 RAG、Embedding、向量检索及模型路由，具备 Prompt / 上下文工程、工作流编排、结构化输出校验和 AI 原型开发能力。</p></article>
+        <article class="paper-card skill reveal"><div class="skill-mark">↗</div><h3>产品设计</h3><p>熟悉 Figma、Axure、墨刀、XMind，可完成 PRD、产品原型、业务流程、信息架构、验收标准及版本规划。</p></article>
+        <article class="paper-card skill reveal"><div class="skill-mark">⌁</div><h3>数据分析</h3><p>熟练使用 Python、NumPy、Pandas、Matplotlib、SQL、Excel、Power Query、Power BI、DAX，可完成数据清洗、指标分析、漏斗分析、A/B Test 及可视化验证。</p></article>
+        <article class="paper-card skill reveal"><div class="skill-mark">⌘</div><h3>开发与协作</h3><p>了解 Git/GitHub、Flutter、Android Studio 基础开发与版本管理，能够与研发协同完成产品验证、测试与发布。</p></article>
+      </div>
+    </div></section>
+
+    <section id="life"><div class="container">
+      <div class="section-heading reveal"><div><span class="eyebrow">Life on Earth</span><h2>生活切片</h2></div><p>走出屏幕、走进山野；在自己的小小轨道上，收集辽阔与晴朗。</p></div>
+      <p class="life-intro reveal">这一组来自高原与山野的瞬间。点击任意照片，可以放大查看。</p>
+      <div class="life-gallery">
+        <button class="life-photo reveal" type="button" data-photo="assets/life-01-large.webp" aria-label="查看草原牛仔帽照片"><img src="assets/life-01.webp" width="640" height="959" loading="lazy" decoding="async" alt="草原上的林扬洋，戴着牛仔帽" /><span class="photo-note">wide open sky</span></button>
+        <button class="life-photo reveal" type="button" data-photo="assets/life-02-large.webp" aria-label="查看山湖徒步照片"><img src="assets/life-02.webp" width="640" height="853" loading="lazy" decoding="async" alt="云雾山湖边徒步的林扬洋" /><span class="photo-note">into the wild</span></button>
+        <button class="life-photo reveal" type="button" data-photo="assets/life-03-large.webp" aria-label="查看骑马照片"><img src="assets/life-03.webp" width="640" height="855" loading="lazy" decoding="async" alt="草原上骑马的林扬洋" /><span class="photo-note">ride with wind</span></button>
+        <button class="life-photo reveal" type="button" data-photo="assets/life-04-large.webp" aria-label="查看草原合影"><img src="assets/life-04.webp" width="640" height="849" loading="lazy" decoding="async" alt="草原花海中的林扬洋" /><span class="photo-note">a good day</span></button>
+        <button class="life-photo reveal" type="button" data-photo="assets/life-05-large.webp" aria-label="查看山路照片"><img src="assets/life-05.webp" width="640" height="960" loading="lazy" decoding="async" alt="山路边的林扬洋" /><span class="photo-note">keep going</span></button>
+      </div>
+    </div></section>
+
+  </main>
+  <footer>© <span id="year"></span> 林扬洋 · Drawn somewhere in the Milky Way.</footer>
+  <dialog class="contact-dialog" id="contactDialog" aria-labelledby="contactTitle">
+    <button class="contact-close" id="contactClose" type="button" aria-label="关闭联系卡片" autofocus>×</button>
+    <h2 id="contactTitle">联系我</h2>
+    <dl class="contact-details">
+      <div class="contact-detail"><dt>电话</dt><dd><a href="tel:+8617842275174">+86 17842275174</a></dd></div>
+      <div class="contact-detail"><dt>邮箱</dt><dd><a href="mailto:1349802098@qq.com">1349802098@qq.com</a></dd></div>
+      <div class="contact-detail"><dt>微信</dt><dd>Elic22331</dd></div>
+    </dl>
+  </dialog>
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="生活照片预览" aria-modal="true"><figure><button id="lightboxClose" type="button" aria-label="关闭照片预览">×</button><img id="lightboxImage" alt="" /></figure></div>
+  <script>
+    const contactDialog = document.getElementById('contactDialog');
+    let contactTrigger;
+    let previousOverflow;
+    document.querySelectorAll('[data-contact-open]').forEach((button) => button.addEventListener('click', () => {
+      contactTrigger = button;
+      previousOverflow = document.body.style.overflow;
+      contactDialog.showModal();
+      document.body.style.overflow = 'hidden';
+    }));
+    document.getElementById('contactClose').addEventListener('click', () => contactDialog.close());
+    contactDialog.addEventListener('click', (event) => {
+      const bounds = contactDialog.getBoundingClientRect();
+      if (event.target === contactDialog && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) contactDialog.close();
+    });
+    contactDialog.addEventListener('close', () => {
+      document.body.style.overflow = previousOverflow;
+      contactTrigger?.focus({ preventScroll: true });
+    });
+    const opening = document.getElementById('opening');
+    const enterSite = () => { opening.classList.add('is-dismissed'); document.getElementById('opening').setAttribute('aria-hidden', 'true'); document.querySelector('.brand').focus({ preventScroll: true }); };
+    document.getElementById('earthButton').addEventListener('click', enterSite);
+    document.getElementById('startButton').addEventListener('click', enterSite);
+    document.getElementById('menuButton').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+    document.querySelectorAll('.nav-links a').forEach((link) => link.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
+
+    if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } }), { threshold: .1 });
+    document.querySelectorAll('.reveal').forEach((item) => revealObserver.observe(item));
+    const navLinks = [...document.querySelectorAll('.nav-links a')];
+    const navObserver = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) navLinks.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id)); }), { rootMargin: '-35% 0px -57% 0px' });
+    document.querySelectorAll('main section[id]').forEach((section) => navObserver.observe(section));
+    }
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    let activePhoto;
+    const closeLightbox = () => { document.body.style.overflow = ''; if (activePhoto) activePhoto.focus({ preventScroll: true }); lightbox.classList.remove('open'); lightbox.setAttribute('aria-hidden', 'true'); };
+    document.querySelectorAll('.life-photo').forEach((photo) => photo.addEventListener('click', () => { activePhoto = photo; document.body.style.overflow = 'hidden'; const image = photo.querySelector('img'); lightboxImage.src = photo.dataset.photo; lightboxImage.alt = image.alt; lightbox.classList.add('open'); lightbox.setAttribute('aria-hidden', 'false'); document.getElementById('lightboxClose').focus(); }));
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (event) => { if (event.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (event) => { if (lightbox.classList.contains('open')) { if (event.key === 'Escape') closeLightbox(); if (event.key === 'Tab') { event.preventDefault(); document.getElementById('lightboxClose').focus(); } } });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
