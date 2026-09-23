@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="林扬洋的 UI / AI 产品设计作品集：GTA Mobile UI、DO OR NOT、Yangyang AI。">
+  <title>Selected Works · 林扬洋</title>
+  <style>
+    :root{--paper:#f4f2ed;--ink:#111;--muted:#696969;--line:#c9c6be;--soft:#e9e6df;--max:1440px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit;color:inherit}
+    .wrap{width:min(calc(100% - 40px),var(--max));margin:auto}
+    header{position:sticky;top:0;z-index:20;background:rgba(244,242,237,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .nav{height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+    .brand{display:flex;align-items:baseline;gap:10px;font-weight:800}.brand small{font-size:10px;color:var(--muted);font-weight:600}
+    .nav a:hover{text-decoration:underline;text-underline-offset:4px}
+    .hero{min-height:62vh;display:grid;align-content:end;padding:70px 0 48px;border-bottom:1px solid var(--line)}
+    .kicker{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+    h1{font-size:clamp(58px,11vw,168px);line-height:.82;letter-spacing:-.075em;margin:0;font-weight:700}
+    .hero-row{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-top:34px}
+    .hero-row p{max-width:650px;margin:0;color:var(--muted);font-size:15px;line-height:1.75}
+    .hero-count{font-size:12px;letter-spacing:.14em;white-space:nowrap}
+    .project{padding:42px 0 70px;border-bottom:1px solid var(--line)}
+    .meta{display:grid;grid-template-columns:110px 1fr auto;gap:24px;align-items:start;margin-bottom:28px}
+    .num,.tagline{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+    .title h2{font-size:clamp(42px,6vw,92px);line-height:.92;letter-spacing:-.055em;margin:0 0 14px}
+    .title p{max-width:690px;margin:0;color:var(--muted);line-height:1.7;font-size:14px}
+    .links{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .pill{border:1px solid var(--ink);padding:10px 14px;border-radius:999px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;transition:.2s}
+    .pill:hover{background:var(--ink);color:var(--paper);transform:translateY(-1px)}
+    .gallery{position:relative;background:#111;overflow:hidden;aspect-ratio:16/9;border:1px solid #111}
+    .slides{height:100%}
+    .slide{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .45s ease}
+    .slide.active{opacity:1;pointer-events:auto}
+    .slide img{width:100%;height:100%;object-fit:contain;background:#0b0b0b}
+    .caption{position:absolute;left:18px;top:16px;z-index:3;padding:8px 10px;background:rgba(244,242,237,.93);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+    .controls{display:grid;grid-template-columns:1fr auto auto auto;gap:8px;align-items:center;margin-top:12px;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+    .controls button{border:0;border-bottom:1px solid var(--ink);background:transparent;padding:8px 3px;cursor:pointer}
+    .controls button:hover{opacity:.55}
+    .counter{font-variant-numeric:tabular-nums}
+    .mock{height:100%;position:relative;overflow:hidden}
+    .gta{background:radial-gradient(circle at 68% 28%,#50565f 0,transparent 22%),linear-gradient(145deg,#1b2027,#080b0f 62%,#20252b)}
+    .gta:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 48%,rgba(255,255,255,.04) 49%,transparent 50%),linear-gradient(0deg,transparent 48%,rgba(255,255,255,.03) 49%,transparent 50%);background-size:110px 110px}
+    .hud{position:absolute;border:1px solid rgba(255,255,255,.75);color:white;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);font-size:12px;letter-spacing:.08em}
+    .hud.top{top:7%;left:4%;padding:10px 14px}.hud.map{left:5%;bottom:8%;width:145px;height:145px;border-radius:50%;display:grid;place-items:center}.hud.action{right:5%;bottom:10%;padding:28px;border-radius:50%}.hud.weapon{right:7%;top:9%;padding:12px 18px}.hud.center{left:50%;top:50%;transform:translate(-50%,-50%);padding:12px 18px}
+    .ai{background:#edf0eb;color:#172019;padding:7%;display:grid;grid-template-columns:33% 1fr;gap:4%}
+    .ai-panel{background:#dfe5dd;border:1px solid #b9c0b7;border-radius:22px;padding:8%;display:flex;flex-direction:column;justify-content:space-between}
+    .avatar{width:92px;height:92px;border-radius:28px;background:linear-gradient(145deg,#202b27,#82958c);box-shadow:inset 0 0 0 1px rgba(255,255,255,.7)}
+    .ai-panel strong{font-size:clamp(24px,3vw,54px);letter-spacing:-.04em}.ai-panel p{font-size:12px;line-height:1.6;color:#607069}
+    .chat{background:#f8faf7;border:1px solid #c7cec5;border-radius:22px;padding:5%;display:flex;flex-direction:column;gap:12px}
+    .bubble{max-width:72%;padding:12px 15px;border-radius:18px;font-size:12px;line-height:1.55}.bubble.user{align-self:flex-end;background:#cfe8c8}.bubble.bot{background:#e6e9e4}.input{margin-top:auto;border:1px solid #cbd1c8;border-radius:16px;padding:14px;color:#7b857e;background:white}
+    footer{min-height:180px;display:flex;align-items:flex-end;padding:42px 0;font-size:12px;letter-spacing:.11em;text-transform:uppercase}
+    footer .wrap{display:flex;justify-content:space-between;gap:20px}
+    @media(max-width:800px){.hero{min-height:50vh}.hero-row{display:block}.hero-count{margin-top:24px}.meta{grid-template-columns:1fr}.links{justify-content:flex-start}.gallery{aspect-ratio:4/3}.controls{grid-template-columns:1fr auto auto}.controls .pause{grid-column:1/-1;text-align:left;width:max-content}.ai{grid-template-columns:1fr;padding:5%}.ai-panel{display:none}.nav{height:58px}}
+  </style>
+</head>
+<body id="top">
+<header><div class="wrap nav"><a class="brand" href="#top">PORTFOLIO <small>UI 设计</small></a><a href="https://github.com/tpos8" target="_blank" rel="noreferrer">GitHub ↗</a></div></header>
+
+<main>
+  <section class="hero"><div class="wrap">
+    <div class="kicker">Selected works · 2026</div>
+    <h1>精选作品</h1>
+    <div class="hero-row"><p>产品、交互与 AI Native 实践。这里保留完整的设计入口与可交互展示，并将原 ChatGPT Site 的作品结构迁移为可持续维护的 GitHub 静态站点。</p><div class="hero-count">03 PROJECTS</div></div>
+  </div></section>
+
+  <section class="project" id="gta"><div class="wrap">
+    <div class="meta">
+      <div class="num">01 / 03</div>
+      <div class="title"><div class="tagline">UI / UX · Mobile Game</div><h2>GTA Mobile UI</h2><p>为 GTA Online 移动端场景设计操控 HUD，围绕菜单、武器切换、角色切换与手机操作重新组织触控层级，并保持游戏画面的沉浸感。</p></div>
+      <div class="links"><a class="pill" href="https://www.figma.com/design/OtODOUWWGoPyWtQyc0aTss/GTA-Mobile-UI?node-id=0-1&t=m0EOq9WrAOffAzNg-1" target="_blank" rel="noreferrer">Figma ↗</a><a class="pill" href="https://pcndzct0yyil.feishu.cn/wiki/UkcYweTLZi0NK5ky22rcD5VunCh?from=from_copylink" target="_blank" rel="noreferrer">项目策划书 ↗</a></div>
+    </div>
+    <div class="carousel" data-carousel>
+      <div class="gallery"><div class="slides">
+        <div class="slide active"><div class="mock gta"><span class="caption">菜单状态</span><div class="hud top">PAUSE / MENU</div><div class="hud map">MAP</div><div class="hud action">A</div></div></div>
+        <div class="slide"><div class="mock gta"><span class="caption">武器切换</span><div class="hud weapon">WEAPON WHEEL</div><div class="hud center">SELECT / SWIPE</div><div class="hud map">MAP</div></div></div>
+        <div class="slide"><div class="mock gta"><span class="caption">角色切换</span><div class="hud top">CHARACTER</div><div class="hud center">HOLD & SWITCH</div><div class="hud action">↻</div></div></div>
+        <div class="slide"><div class="mock gta"><span class="caption">手机界面</span><div class="hud top">PHONE</div><div class="hud center">CONTACTS · MAP · JOBS</div><div class="hud action">×</div></div></div>
+        <div class="slide"><div class="mock gta"><span class="caption">HUD 总览</span><div class="hud top">ONLINE</div><div class="hud weapon">AMMO 30 / 120</div><div class="hud map">CITY</div><div class="hud action">ENTER</div></div></div>
+      </div></div>
+      <div class="controls"><span class="counter">01 / 05</span><button class="pause" type="button">暂停自动轮播 Ⅱ</button><button class="prev" type="button">上一张 ←</button><button class="next" type="button">下一张 →</button></div>
+    </div>
+  </div></section>
+
+  <section class="project" id="do"><div class="wrap">
+    <div class="meta">
+      <div class="num">02 / 03</div>
+      <div class="title"><div class="tagline">Independent Product · Flutter</div><h2>DO OR NOT</h2><p>从需求分析、PRD、UI 到 Flutter 开发与上线的极简决策产品。通过摇动抽签完成“提问—摇动—结果反馈”的轻量决策闭环，并持续基于使用数据迭代。</p></div>
+      <div class="links"><a class="pill" href="https://do.smallorbit.cn" target="_blank" rel="noreferrer">打开网站 ↗</a><a class="pill" href="https://github.com/tpos8/do-or-not" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+    </div>
+    <div class="carousel" data-carousel>
+      <div class="gallery"><div class="slides">
+        <div class="slide active"><span class="caption">提问</span><img src="https://raw.githubusercontent.com/tpos8/Do-or-not/main/assets/screenshots/question.jpg" alt="DO OR NOT 提问界面"></div>
+        <div class="slide"><span class="caption">摇动</span><img src="https://raw.githubusercontent.com/tpos8/Do-or-not/main/assets/screenshots/shake.jpg" alt="DO OR NOT 摇动界面"></div>
+        <div class="slide"><span class="caption">结果</span><img src="https://raw.githubusercontent.com/tpos8/Do-or-not/main/assets/screenshots/result.jpg" alt="DO OR NOT 结果界面"></div>
+        <div class="slide"><span class="caption">启动页</span><img src="https://raw.githubusercontent.com/tpos8/Do-or-not/main/assets/screenshots/splash.png" alt="DO OR NOT 启动页"></div>
+        <div class="slide"><span class="caption">新版首页</span><img src="https://raw.githubusercontent.com/tpos8/Do-or-not/main/assets/updates/home-preview.png" alt="DO OR NOT 新版首页"></div>
+        <div class="slide"><span class="caption">洞察</span><img src="https://raw.githubusercontent.com/tpos8/Do-or-not/main/assets/updates/insight-preview.png" alt="DO OR NOT 洞察页"></div>
+      </div></div>
+      <div class="controls"><span class="counter">01 / 06</span><button class="pause" type="button">暂停自动轮播 Ⅱ</button><button class="prev" type="button">上一张 ←</button><button class="next" type="button">下一张 →</button></div>
+    </div>
+  </div></section>
+
+  <section class="project" id="yangyang"><div class="wrap">
+    <div class="meta">
+      <div class="num">03 / 03</div>
+      <div class="title"><div class="tagline">AI Product · Personal Agent · RAG</div><h2>Yangyang AI</h2><p>基于个人知识库构建的 AI 数字分身。采用前后端分离架构，结合 LangChain、RAG、向量数据库与大模型，实现用户输入、知识检索与个性化回答的完整链路。</p></div>
+      <div class="links"><a class="pill" href="https://www.figma.com/design/pZiTVfZwac7M7GK9zDtM3z/Yangyang-AI-%E2%80%94-Web-Chat-UI?node-id=5-2&t=UlyHuv3SF7xnYDcO-1" target="_blank" rel="noreferrer">Figma ↗</a><a class="pill" href="https://ai.smallorbit.cn/" target="_blank" rel="noreferrer">在线体验 ↗</a><a class="pill" href="https://github.com/tpos8/yangyang-ai-frontend" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+    </div>
+    <div class="carousel" data-carousel>
+      <div class="gallery"><div class="slides">
+        <div class="slide active"><div class="mock ai"><span class="caption">Web Chat UI</span><div class="ai-panel"><div class="avatar"></div><div><strong>Yangyang AI</strong><p>Personal AI · Ask me anything about my projects, research and experience.</p></div></div><div class="chat"><div class="bubble bot">你好，我是 Yangyang AI 👋 有什么想了解的？</div><div class="bubble user">介绍一下你的 AI 产品项目。</div><div class="bubble bot">我会先检索个人知识库，再结合相关资料回答，并尽量保持自然、简洁。</div><div class="input">输入消息…</div></div></div></div>
+        <div class="slide"><div class="mock ai"><span class="caption">RAG 检索</span><div class="ai-panel"><div class="avatar"></div><div><strong>Knowledge</strong><p>PDF · Markdown · Code · Resume · Research</p></div></div><div class="chat"><div class="bubble user">你做过哪些 Agent 项目？</div><div class="bubble bot">正在检索知识库中的项目经历与技术栈…</div><div class="bubble bot">已找到 LangGraph 多智能体小说系统、个人 RAG Agent 等相关内容。</div><div class="input">检索完成 · 3 chunks</div></div></div></div>
+        <div class="slide"><div class="mock ai"><span class="caption">对话体验</span><div class="ai-panel"><div class="avatar"></div><div><strong>Context</strong><p>Frontend · FastAPI · Supabase · Chroma · LLM</p></div></div><div class="chat"><div class="bubble bot">回答会优先依据知识库，资料不足时明确说明，不编造个人经历。</div><div class="bubble user">为什么你适合 AI 产品经理？</div><div class="bubble bot">我会从产品、AI 技术理解、独立开发与科研验证四个维度回答。</div><div class="input">继续提问…</div></div></div></div>
+      </div></div>
+      <div class="controls"><span class="counter">01 / 03</span><button class="pause" type="button">暂停自动轮播 Ⅱ</button><button class="prev" type="button">上一张 ←</button><button class="next" type="button">下一张 →</button></div>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="wrap"><span>PORTFOLIO · LIN YANGYANG</span><a href="#top">↑ 顶部</a></div></footer>
+
+<script>
+document.querySelectorAll('[data-carousel]').forEach(function(root){
+  var slides=[].slice.call(root.querySelectorAll('.slide')), current=0, playing=true, timer;
+  var counter=root.querySelector('.counter'), pause=root.querySelector('.pause');
+  function show(n){current=(n+slides.length)%slides.length;slides.forEach(function(s,i){s.classList.toggle('active',i===current)});counter.textContent=String(current+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0')}
+  function start(){clearInterval(timer);if(playing)timer=setInterval(function(){show(current+1)},4200)}
+  root.querySelector('.prev').addEventListener('click',function(){show(current-1);start()});
+  root.querySelector('.next').addEventListener('click',function(){show(current+1);start()});
+  pause.addEventListener('click',function(){playing=!playing;pause.textContent=playing?'暂停自动轮播 Ⅱ':'继续自动轮播 ▶';start()});
+  start();
+});
+</script>
+</body>
+</html>
